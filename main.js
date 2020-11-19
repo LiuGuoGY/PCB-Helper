@@ -19,7 +19,13 @@ mainWindow = new BrowserWindow({width: 800, height: 600})
     }))
   */
   // 加载应用----适用于 react 项目
-  mainWindow.loadURL('http://localhost:3000/');
+  // mainWindow.loadURL('http://localhost:3000/');
+  const startUrl = process.env.ELECTRON_START_URL || url.format({
+      pathname: path.join(__dirname, './build/index.html'),
+      protocol: 'file:',
+      slashes: true
+  });
+  mainWindow.loadURL(startUrl);
   
   // 打开开发者工具，默认不打开
   // mainWindow.webContents.openDevTools()
