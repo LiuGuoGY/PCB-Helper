@@ -1,14 +1,8 @@
-Win
+## PCB-Helper
 
-```json
-"electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && electron ."
+development
+
+```shell
+$npm run dev
 ```
-
-Mac
-
-```json
-"electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron ."
-```
-
-
 
