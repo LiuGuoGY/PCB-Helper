@@ -16,6 +16,9 @@
   "build": {
     "extends": null,
     "appId": "com.liuguo.app",
+    "directories": {
+      "buildResources": "public"
+    },
     "mac": {
       "target": [
         "dmg"
