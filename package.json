@@ -37,7 +37,8 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "dev": "nf start",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "pack": "npm run build && npm run dist"
   },
   "eslintConfig": {
     "extends": [
