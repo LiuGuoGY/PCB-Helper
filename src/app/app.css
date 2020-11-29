@@ -91,3 +91,14 @@
     -ms-user-select:none; 
     user-select:none;
 }
+
+.contentParent {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.contentElement {
+    height: 100%;
+    width: 100%;
+}

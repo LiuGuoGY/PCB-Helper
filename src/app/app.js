@@ -1,5 +1,11 @@
 import React from 'react';
 import "./app.css"
+
+//---class---
+import PageStart from "../pages/start"
+import PageAccess from "../pages/access"
+
+//---icon---
 import iconPCBCheck from "../assets/icon-basic.png"  //#6F6B6D
 import iconRuleSet from "../assets/icon-xiezi.png"
 import iconBasic from "../assets/icon-chizi.png"
@@ -61,7 +67,10 @@ class Menu extends React.Component {
 class Content extends React.Component {
     render() {
         return (
-            <div></div>
+            <div className="contentParent">
+                <PageStart show={this.props.index === 0} className="contentElement"></PageStart>
+                <PageAccess show={this.props.index === 1} className="contentElement"></PageAccess>
+            </div>
         );
     }
 }
@@ -109,7 +118,7 @@ class App extends React.Component {
                     <Menu value={this.state.menus} index={this.state.menuIndex} onClick={(index)=>this.handleClick(index)}></Menu>
                 </div>
                 <div className="contentView">
-                    <Content />
+                    <Content index={this.state.menuIndex}/>
                 </div>
             </div>
         );
