@@ -19,7 +19,7 @@ class MenuTitle extends React.Component {
 class MenuButton extends React.Component {
     render() {
         return (
-            <button className="menuButton" onClick={()=>this.props.onClick()}>
+            <button style={this.props.style} className="menuButton" onClick={()=>this.props.onClick(this.props.index)}>
                 <div className="menuButtonContent">
                     <img src={this.props.value.img} alt="icon" className="menuButtonIcon"></img>
                     <p className="menuButtonText">{this.props.value.text}</p>
@@ -33,12 +33,20 @@ class Menu extends React.Component {
     render() {
         let elements = []
         let data = this.props.value;
+        let id = 0;
         for(let i = 0; i < data.length; i++) {
             if(data[i].title) {
-                elements.push(<MenuTitle value={data[i].title}></MenuTitle>)
+                elements.push(<MenuTitle value={data[i].title} key={data[i].title}></MenuTitle>)
             }
             for(let j = 0; j < data[i].items.length; j++) {
-                elements.push(<MenuButton value={data[i].items[j]} onClick={()=>this.props.onClick()}></MenuButton>)
+                let style = {
+                    backgroundColor: "#ebe2e2"
+                }
+                if(this.props.index === id) {
+                    style.backgroundColor = "#dfd6d6"
+                }
+                elements.push(<MenuButton style={style} value={data[i].items[j]} index={id} key={data[i].items[j].text} onClick={(x)=>this.props.onClick(x)}></MenuButton>)
+                id++;
             }
         }
         return (
@@ -49,14 +57,6 @@ class Menu extends React.Component {
         );
     }
 }
-
-// class TextA extends React.Component {
-//     render() {
-//         return (
-//             <div></div>
-//         );
-//     }
-// }
 
 class Content extends React.Component {
     render() {
@@ -96,15 +96,17 @@ class App extends React.Component {
         }
     }
 
-    handleClick() {
-        // alert("点了");
+    handleClick(index) {
+        this.setState({
+            menuIndex: index
+        })
     }
 
     render() {
         return (
             <div className="mainView">
                 <div className="menuView">
-                    <Menu value={this.state.menus} onClick={()=>this.handleClick()}></Menu>
+                    <Menu value={this.state.menus} index={this.state.menuIndex} onClick={(index)=>this.handleClick(index)}></Menu>
                 </div>
                 <div className="contentView">
                     <Content />

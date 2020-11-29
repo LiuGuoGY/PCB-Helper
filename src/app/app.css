@@ -38,7 +38,7 @@
 }
 
 .menuButton:hover {
-    background-color: #dfd6d6;
+    background-color: #dfd6d6 !important;
 }
 
 .menuButton:focus {
