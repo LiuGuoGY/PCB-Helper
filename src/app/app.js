@@ -65,11 +65,20 @@ class Menu extends React.Component {
 }
 
 class Content extends React.Component {
+
+    renderElement(element, index) {
+        return (
+            <div style={{visibility:(this.props.index === index)?"visible":"hidden"}} className="contentElement">
+                {element}
+            </div>
+        );
+    }
+
     render() {
         return (
             <div className="contentParent">
-                <PageStart show={this.props.index === 0}></PageStart>
-                <PageAccess show={this.props.index === 1}></PageAccess>
+                {this.renderElement(<PageStart ></PageStart>, 0)}
+                {this.renderElement(<PageAccess ></PageAccess>, 1)}
             </div>
         );
     }
