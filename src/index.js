@@ -4,7 +4,7 @@ import './index.css';
 import App from "./app/app"
 
 ReactDOM.render(
-  <React.StrictMode style={{webkitAppRegion: "drag"}}>
+  <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

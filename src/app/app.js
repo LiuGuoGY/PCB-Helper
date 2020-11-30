@@ -68,7 +68,7 @@ class Content extends React.Component {
 
     renderElement(element, index) {
         return (
-            <div style={{visibility:(this.props.index === index)?"visible":"hidden"}} className="contentElement">
+            <div style={{display:(this.props.index === index)?"block":"none"}} className="contentElement">
                 {element}
             </div>
         );
@@ -93,7 +93,7 @@ class App extends React.Component {
                 text: "快速开始"
             }]
         },{
-            title: "Basic",
+            title: "基础",
             items: [{
                 img: iconBasic,
                 text: "辅助功能"

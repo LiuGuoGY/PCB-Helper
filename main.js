@@ -9,8 +9,10 @@ let mainWindow
 function createWindow () {
   //创建浏览器窗口,宽高自定义具体大小你开心就好
   mainWindow = new BrowserWindow({
-    width: 800, 
+    width: 900, 
     height: 600,
+    minWidth: 900,
+    minHeight: 600,
     titleBarStyle: 'hidden',
     // webPreferences: {
     //   webSecurity: false
