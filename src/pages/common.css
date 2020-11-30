@@ -1,0 +1,14 @@
+.page_title {
+    color: #18191c;
+    font-size: 25px;
+    font-weight:bold;
+    margin-top: 30px;
+    margin-left: 25px;
+    display: absolute;
+    -moz-user-select: none; 
+    -o-user-select:none; 
+    -khtml-user-select:none; 
+    -webkit-user-select:none; 
+    -ms-user-select:none; 
+    user-select:none;
+}
