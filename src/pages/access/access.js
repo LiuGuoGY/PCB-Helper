@@ -9,7 +9,7 @@ class PageAccess extends React.Component {
                 <div className="page_title">辅助功能</div>
                 <div className="page_caculator_parent">
                     <div className="page_caculator_cal_content">
-                        <input></input>
+                        <input className="page_caculator_input"></input>
                     </div>
                 </div>
             </div>
