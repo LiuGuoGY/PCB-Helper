@@ -2,8 +2,8 @@ import React from 'react';
 import "./app.css"
 
 //---class---
-import PageStart from "../pages/start"
-import PageAccess from "../pages/access"
+import PageStart from "../pages/start/start"
+import PageAccess from "../pages/access/access"
 
 //---icon---
 import iconPCBCheck from "../assets/icon-basic.png"  //#6F6B6D
@@ -68,8 +68,8 @@ class Content extends React.Component {
     render() {
         return (
             <div className="contentParent">
-                <PageStart show={this.props.index === 0} className="contentElement"></PageStart>
-                <PageAccess show={this.props.index === 1} className="contentElement"></PageAccess>
+                <PageStart show={this.props.index === 0}></PageStart>
+                <PageAccess show={this.props.index === 1}></PageAccess>
             </div>
         );
     }

@@ -1,9 +1,10 @@
 import React from 'react';
+import "./page.css"
 
 class PageStart extends React.Component {
     render() {
         return (
-            <div style={{backgroundColor: "red", visibility:(this.props.show)?"visible":"hidden"}}>233</div>
+            <div style={{visibility:(this.props.show)?"visible":"hidden"}} className="start_main">233</div>
         );
     }
 }
