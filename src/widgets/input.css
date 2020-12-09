@@ -1,0 +1,16 @@
+.page_caculator_input {
+    border: solid;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 20px;
+    outline: none;
+}
+
+.page_caculator_input:focus {
+    border-radius: 2px;
+    border-width: 3px;
+    border-color: #7BAFF3;
+}

@@ -14,7 +14,7 @@
     flex-direction: column;
     width: 250px;
     height: 100%;
-    background-color: #ebe2e2;
+    background-color: #E8E1E2;
 }
 
 .contentView {
@@ -36,21 +36,23 @@
     user-select:none;
 }
 
-.menuButton {
+.menuButtonFocus {
     height: 40px;
     border: 0px;
     border-radius: 8px;
     margin: 2px 10px;
-    background-color: #ebe2e2;
+    background-color: #DCD6D6;
     -webkit-app-region: no-drag;
+    outline: none;
 }
 
-.menuButton:hover {
-    background-color: #dfd6d6 !important;
-}
-
-.menuButton:focus {
-    background-color: #dfd6d6;
+.menuButtonUnfocus {
+    height: 40px;
+    border: 0px;
+    border-radius: 8px;
+    margin: 2px 10px;
+    background-color: #E8E1E2;
+    -webkit-app-region: no-drag;
     outline: none;
 }
 
@@ -75,7 +77,7 @@
 }
 
 .menuButtonText {
-    color: #18191c;
+    color: #202327;
     font-size: 14px;
     margin-left: 8px;
     line-height: 100%;
@@ -111,4 +113,26 @@
     position: absolute;
     width: 100%;
     height: 100%;
-  }
+}
+
+/* @media (prefers-color-scheme: dark) { 
+    .menuView {  
+        background-color: #2F2A2E;
+    }
+
+    .menuButton {
+        background-color: #2F2A2E;
+    }
+
+    .menuButtonFocus {
+        background-color: #484447;
+    }
+    
+    .menuButtonUnfocus {
+        background-color: #2F2A2E;
+    }
+
+    .menuButtonText {
+        color: #FFFFFF;
+    }
+  }  */

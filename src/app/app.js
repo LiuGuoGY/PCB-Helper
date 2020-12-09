@@ -25,7 +25,7 @@ class MenuTitle extends React.Component {
 class MenuButton extends React.Component {
     render() {
         return (
-            <button style={this.props.style} className="menuButton" onClick={()=>this.props.onClick(this.props.index)}>
+            <button className={(this.props.focus)?"menuButtonFocus":"menuButtonUnfocus"} onClick={()=>this.props.onClick(this.props.index)}>
                 <div className="menuButtonContent">
                     <img src={this.props.value.img} alt="icon" className="menuButtonIcon"></img>
                     <p className="menuButtonText">{this.props.value.text}</p>
@@ -45,13 +45,7 @@ class Menu extends React.Component {
                 elements.push(<MenuTitle value={data[i].title} key={data[i].title}></MenuTitle>)
             }
             for(let j = 0; j < data[i].items.length; j++) {
-                let style = {
-                    backgroundColor: "#ebe2e2"
-                }
-                if(this.props.index === id) {
-                    style.backgroundColor = "#dfd6d6"
-                }
-                elements.push(<MenuButton style={style} value={data[i].items[j]} index={id} key={data[i].items[j].text} onClick={(x)=>this.props.onClick(x)}></MenuButton>)
+                elements.push(<MenuButton focus={(this.props.index === id)} value={data[i].items[j]} index={id} key={data[i].items[j].text} onClick={(x)=>this.props.onClick(x)}></MenuButton>)
                 id++;
             }
         }
