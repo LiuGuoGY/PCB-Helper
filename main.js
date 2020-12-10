@@ -14,9 +14,10 @@ function createWindow () {
     minWidth: 900,
     minHeight: 600,
     titleBarStyle: 'hidden',
-    // webPreferences: {
-    //   webSecurity: false
-    // }
+    webPreferences: {
+      enableRemoteModule: true,
+      nodeIntegration: true,
+    }
   })
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('http://localhost:3000/');
