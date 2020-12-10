@@ -59,6 +59,11 @@
     width: 220px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
+}
+
+.menu_element_parent:active > img{
+    filter: brightness(70%);
 }
 
 .menu_element_icon {
@@ -66,6 +71,13 @@
     width: 40px;
     margin-left: 20px;
     margin-top: 20px;
+    -moz-user-select: none; 
+    -o-user-select:none; 
+    -khtml-user-select:none; 
+    -webkit-user-select:none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -webkit-user-drag: none;
 }
 
 .menu_element_title {
@@ -98,4 +110,12 @@
     -webkit-user-select:none; 
     -ms-user-select:none; 
     user-select:none;
+}
+
+.dividing_line {
+    width: 660px;
+    height: 1px;
+    margin: 10px 0;
+    background: #eeeeee;
+    text-align: center;
 }
