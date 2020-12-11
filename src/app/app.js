@@ -1,5 +1,5 @@
 import React from 'react';
-import "./app.css"
+import styles from './app.module.css';
 
 //---class---
 import PageStart from "../pages/start/start"
@@ -17,7 +17,7 @@ import iconFlash from "../assets/icon-shandian.png"
 class MenuTitle extends React.Component {
     render() {
         return (
-            <p className="menuTitle">{this.props.value}</p>
+            <p className={styles.menuTitle}>{this.props.value}</p>
         );
     }
 }
@@ -25,10 +25,10 @@ class MenuTitle extends React.Component {
 class MenuButton extends React.Component {
     render() {
         return (
-            <button className={(this.props.focus)?"menuButtonFocus":"menuButtonUnfocus"} onClick={()=>this.props.onClick(this.props.index)}>
-                <div className="menuButtonContent">
-                    <img src={this.props.value.img} alt="icon" className="menuButtonIcon"></img>
-                    <p className="menuButtonText">{this.props.value.text}</p>
+            <button className={(this.props.focus)?styles.menuButtonFocus:styles.menuButtonUnfocus} onClick={()=>this.props.onClick(this.props.index)}>
+                <div className={styles.menuButtonContent}>
+                    <img src={this.props.value.img} alt="icon" className={styles.menuButtonIcon}></img>
+                    <p className={styles.menuButtonText}>{this.props.value.text}</p>
                 </div>
             </button>
         );
@@ -50,7 +50,7 @@ class Menu extends React.Component {
             }
         }
         return (
-            <div className="menuParent">
+            <div className={styles.menuParent}>
                 <div style={{width: "100%", height:"50px"}}></div>
                 {elements}
             </div>
@@ -62,7 +62,7 @@ class Content extends React.Component {
 
     renderElement(element, index) {
         return (
-            <div style={{display:(this.props.index === index)?"block":"none"}} className="contentElement">
+            <div style={{display:(this.props.index === index)?"block":"none"}} className={styles.contentElement}>
                 {element}
             </div>
         );
@@ -70,7 +70,7 @@ class Content extends React.Component {
 
     render() {
         return (
-            <div className="contentParent">
+            <div className={styles.contentParent}>
                 {this.renderElement(<PageStart ></PageStart>, 0)}
                 {this.renderElement(<PageAccess ></PageAccess>, 1)}
             </div>
@@ -116,11 +116,11 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="mainView">
-                <div className="menuView">
+            <div className={styles.mainView}>
+                <div className={styles.menuView}>
                     <Menu value={this.state.menus} index={this.state.menuIndex} onClick={(index)=>this.handleClick(index)}></Menu>
                 </div>
-                <div className="contentView">
+                <div className={styles.contentView}>
                     <Content index={this.state.menuIndex}/>
                 </div>
             </div>

@@ -61,6 +61,7 @@ class PageAccess extends React.Component {
                 <div className="page_title">辅助功能</div>
                 <div className="page_access_menus_parent">
                     <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{this.openUnitConvertWindow()}}></MenuElement>
+                    <DividingLine></DividingLine>
                 </div>
             </div>
         );
