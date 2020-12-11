@@ -1,3 +1,8 @@
+div, p, img {
+    user-select:none;
+    -webkit-user-drag: none;
+}
+
 .mainView {
     display: flex;
     flex-direction: row;
@@ -28,12 +33,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
 }
 
 .menuButtonFocus {
@@ -67,12 +66,6 @@
     height: 23px;
     width: 23px;
     margin-left: 4px;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
     -webkit-user-drag: none;
 }
 
@@ -81,12 +74,6 @@
     font-size: 14px;
     margin-left: 8px;
     line-height: 100%;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
 }
 
 .menuTitle {
@@ -95,12 +82,6 @@
     margin: 12px 19px 0px 19px;
     height: 30px;
     line-height: 30px;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
 }
 
 .contentParent {

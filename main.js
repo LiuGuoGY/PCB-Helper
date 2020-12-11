@@ -17,6 +17,7 @@ function createWindow () {
     webPreferences: {
       enableRemoteModule: true,
       nodeIntegration: true,
+      contextIsolation: false,
     }
   })
   // 加载应用----适用于 react 项目

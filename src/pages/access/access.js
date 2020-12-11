@@ -42,7 +42,13 @@ class DividingLine extends React.Component {
 class PageAccess extends React.Component {
 
     openUnitConvertWindow() {
-        let win = new BrowserWindow({ width: 800, height: 600 })
+        let win = new BrowserWindow({ 
+            width: 800, 
+            height: 600,
+            fullscreen: false,
+            contextIsolation: false,
+            maximizable: false,
+        })
         win.loadURL('https://github.com')
         win.on('closed', function () {
             win = null
@@ -51,7 +57,7 @@ class PageAccess extends React.Component {
 
     render() {
         return (
-            <div style={{width: "100%", height: "100%"}}>
+            <div style={{width: "100%", height: "100%", position:"absolute"}}>
                 <div className="page_title">辅助功能</div>
                 <div className="page_access_menus_parent">
                     <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{this.openUnitConvertWindow()}}></MenuElement>

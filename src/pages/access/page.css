@@ -71,13 +71,6 @@
     width: 40px;
     margin-left: 20px;
     margin-top: 20px;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
-    -webkit-user-drag: none;
 }
 
 .menu_element_title {
@@ -89,12 +82,6 @@
     height: 18px;
     line-height: 18px;
     margin-left: 20px;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
 }
 
 .menu_element_subtitle {
@@ -104,12 +91,6 @@
     line-height: 15px;
     margin-left: 20px;
     margin-right: 20px;
-    -moz-user-select: none; 
-    -o-user-select:none; 
-    -khtml-user-select:none; 
-    -webkit-user-select:none; 
-    -ms-user-select:none; 
-    user-select:none;
 }
 
 .dividing_line {
