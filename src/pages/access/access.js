@@ -1,6 +1,6 @@
 import React from 'react';
-import "../common.css";
-import "./page.css";
+import commonStyles from "../common.module.css";
+import styles from "./access.module.css";
 
 //---icon---
 import iconTurn from "../../assets/icon-zhuanhuan.png"
@@ -22,10 +22,10 @@ const BrowserWindow = remote.BrowserWindow;
 class MenuElement extends React.Component {
     render() {
         return (
-            <div className="menu_element_parent" onClick={()=>this.props.onClick()}>
-                <img src={this.props.icon} alt="none" className="menu_element_icon"></img>
-                <p className="menu_element_title">{this.props.title}</p>
-                <p className="menu_element_subtitle">{this.props.subtitle}</p>
+            <div className={styles.menu_element_parent} onClick={()=>this.props.onClick()}>
+                <img src={this.props.icon} alt="none" className={styles.menu_element_icon}></img>
+                <p className={styles.menu_element_title}>{this.props.title}</p>
+                <p className={styles.menu_element_subtitle}>{this.props.subtitle}</p>
             </div>
         );
     }
@@ -34,7 +34,7 @@ class MenuElement extends React.Component {
 class DividingLine extends React.Component {
     render() {
         return (
-            <div className="dividing_line"></div>
+            <div className={styles.dividing_line}></div>
         );
     }
 }
@@ -58,8 +58,8 @@ class PageAccess extends React.Component {
     render() {
         return (
             <div style={{width: "100%", height: "100%", position:"absolute"}}>
-                <div className="page_title">辅助功能</div>
-                <div className="page_access_menus_parent">
+                <div className={commonStyles.page_title}>辅助功能</div>
+                <div className={styles.page_access_menus_parent}>
                     <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{this.openUnitConvertWindow()}}></MenuElement>
                     <DividingLine></DividingLine>
                 </div>
