@@ -1,23 +1,10 @@
 import React from 'react';
+import createWindow from "./window-unit-convert"
 import commonStyles from "../common.module.css";
 import styles from "./access.module.css";
 
 //---icon---
 import iconTurn from "../../assets/icon-zhuanhuan.png"
-
-const { remote } = window.require('electron');
-const BrowserWindow = remote.BrowserWindow;
-
-// class CalculatorElement extends React.Component {
-//     render() {
-//         return (
-//             <div className="element_caculator_parent">
-//                 <p className="element_caculator_title">inch</p>
-//                 <input className="element_caculator_descript"></input>
-//             </div>
-//         );
-//     }
-// }
 
 class MenuElement extends React.Component {
     render() {
@@ -40,27 +27,12 @@ class DividingLine extends React.Component {
 }
 
 class PageAccess extends React.Component {
-
-    openUnitConvertWindow() {
-        let win = new BrowserWindow({ 
-            width: 800, 
-            height: 600,
-            fullscreen: false,
-            contextIsolation: false,
-            maximizable: false,
-        })
-        win.loadURL('https://github.com')
-        win.on('closed', function () {
-            win = null
-        })
-    }
-
     render() {
         return (
             <div style={{width: "100%", height: "100%", position:"absolute"}}>
                 <div className={commonStyles.page_title}>辅助功能</div>
                 <div className={styles.page_access_menus_parent}>
-                    <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{this.openUnitConvertWindow()}}></MenuElement>
+                    <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{createWindow()}}></MenuElement>
                     <DividingLine></DividingLine>
                 </div>
             </div>

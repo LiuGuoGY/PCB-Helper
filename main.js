@@ -22,11 +22,17 @@ function createWindow () {
   })
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('http://localhost:3000/');
-  const startUrl = process.env.ELECTRON_START_URL || url.format({
+  let startUrl = "";
+  if(process.env.ELECTRON_START_URL) {
+    startUrl = process.env.ELECTRON_START_URL;
+  } else {
+    startUrl = url.format({
       pathname: path.join(__dirname, './build/index.html'),
       protocol: 'file:',
       slashes: true
-  });
+    });
+    process.env.REACT_APP_ROOT_DIR = __dirname;
+  }
   mainWindow.loadURL(startUrl);
   
   // 打开开发者工具，默认不打开
