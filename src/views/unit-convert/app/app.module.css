@@ -3,9 +3,25 @@ div, p, img {
     -webkit-user-drag: none;
 }
 
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+input, button {
+    -webkit-app-region: no-drag;
+}
+
 .mainView {
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     position: absolute;
     left: 0;
     right: 0;
@@ -14,106 +30,170 @@ div, p, img {
     -webkit-app-region: drag;
 }
 
-.menuView {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    height: 100%;
-    background-color: #E8E1E2;
-}
-
 .contentView {
     display: flex;
-    width: 100%;
-    height: 100%;
-}
-
-.menuParent {
-    width: 100%;
-    height: 100%;
-    display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
 }
 
-.menuButtonFocus {
-    height: 40px;
-    border: 0px;
-    border-radius: 8px;
-    margin: 2px 10px;
-    background-color: #DCD6D6;
-    -webkit-app-region: no-drag;
-    outline: none;
+.contentHeader {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    background: #F7F7F7;
+    align-items: center;
+    justify-content: center;
 }
 
-.menuButtonUnfocus {
-    height: 40px;
-    border: 0px;
-    border-radius: 8px;
-    margin: 2px 10px;
-    background-color: #E8E1E2;
-    -webkit-app-region: no-drag;
-    outline: none;
+.contentFooter {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background: #F7F7F7;
 }
 
-.menuButtonContent {
+.contentBody {
+    height: auto;
+    width: 100%;
+}
+
+.content_header_text {
+    color: #18191c;
+    font-size: 13px;
+    font-weight:bold;
+    /* margin-top: 30px;
+    margin-left: 70px; */
+    display: absolute;
+    line-height: 100%;
+}
+
+.rowItem {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 100%;
+    height: 40px;
+    width: auto;
 }
 
-.menuButtonIcon {
-    height: 23px;
-    width: 23px;
-    margin-left: 4px;
-    -webkit-user-drag: none;
-}
-
-.menuButtonText {
+.rowText {
     color: #202327;
     font-size: 14px;
     margin-left: 8px;
     line-height: 100%;
+    width: 70px;
 }
 
-.menuTitle {
-    color: #797576;
+.input_content {
+    border: solid;
+    border-radius: 10px;
+    /* border-width: 1px; */
+    border-color: lightblue;
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.input_content:focus {
+    /* border-radius: 2px;
+    border-width: 3px;
+    border-color: #7BAFF3; */
+}
+
+.input_parent {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 35px;
+    width: 180px;
+    border-radius: 10px;
+    background: lightblue;
+}
+
+.caculator_parent {
+    display: flex;
+    height: 25px;
+    width: 180px;
+}
+
+.input_unit_parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 100%;
+}
+
+.input_unit_text {
+    width: auto;
+    height: auto;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 100%;
+    text-align: center;
+    color: white;
+}
+
+.input_content_parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: lightblue;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px 0px 0px 10px;
+    padding: 1px;
+}
+
+.button {
+    border: 1px solid #eeeeee;
+    text-align: center;
+    background: white;
+    width: auto;
+    height: 23px;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: black;
     font-size: 13px;
-    margin: 12px 19px 0px 19px;
-    height: 30px;
-    line-height: 30px;
+    font-weight: normal;
+    padding: 1px 10px 1px 10px;
 }
 
-.contentParent {
-    height: 100%;
-    width: 100%;
-    position: relative;
+.button:active {
+    outline: none;
+    background: #0676E8;
+    color: white;
 }
 
-.contentElement {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+.button:focus {
+    outline: none;
+}
+
+.buttonStress {
+    border: 1px solid #eeeeee;
+    text-align: center;
+    background: #1F8CFC;
+    width: auto;
+    height: 23px;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 1px 10px 1px 10px;
+}
+
+.buttonStress:active {
+    outline: none;
+    background: #0676E8;
+}
+
+.buttonStress:focus {
+    outline: none;
 }
 
 /* @media (prefers-color-scheme: dark) { 
-    .menuView {  
-        background-color: #2F2A2E;
-    }
-
-    .menuButton {
-        background-color: #2F2A2E;
-    }
-
-    .menuButtonFocus {
-        background-color: #484447;
-    }
     
-    .menuButtonUnfocus {
-        background-color: #2F2A2E;
-    }
-
-    .menuButtonText {
-        color: #FFFFFF;
-    }
   }  */

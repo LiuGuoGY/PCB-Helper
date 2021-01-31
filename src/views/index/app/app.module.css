@@ -3,6 +3,18 @@ div, p, img {
     -webkit-user-drag: none;
 }
 
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
 .mainView {
     display: flex;
     flex-direction: row;
