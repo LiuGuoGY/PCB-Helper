@@ -23,16 +23,28 @@ class Input extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.onKeyUp = this.onKeyUp.bind(this);
     }
+
     handleChange(event) {
         this.props.onChange(event.target.value);
+    }
+
+    onKeyUp(e) {
+        if(e.keyCode === 13) {
+            this.props.enter();
+        }
     }
 
     render() {
         return (
             <div className={styles.input_parent}>
                 <div className={styles.input_parent_middle}>
-                    <input className={styles.input} placeholder="请输入数字" value={this.props.value} onChange={this.handleChange}></input>
+                    <input  className={styles.input} 
+                            placeholder="请输入数字" 
+                            value={this.props.value} 
+                            onChange={this.handleChange} 
+                            onKeyUp={this.onKeyUp}></input>
                 </div>
             </div>
         );
@@ -44,7 +56,7 @@ class InputItem extends React.Component {
         return (
             <div className={styles.input_item_parent}>
                 <p className={styles.input_item_text}>{this.props.text}</p>
-                <Input value={this.props.value} onChange={(value)=>{this.props.onChange(value)}}></Input>
+                <Input value={this.props.value} onChange={(value)=>{this.props.onChange(value)}} enter={()=>this.props.enter()}></Input>
                 <p className={styles.input_unit_text}>{this.props.unit}</p>
             </div>
         );
@@ -116,10 +128,10 @@ class Content extends React.Component {
                     <p className={styles.content_header_text}>单位转换</p>
                 </div>
                 <div className={styles.contentBody}>
-                    <InputItem text="长度1：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}}></InputItem>
-                    <InputItem text="长度2：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}}></InputItem>
-                    <InputItem text="长度3：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}}></InputItem>
-                    <InputItem text="长度4：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}}></InputItem>
+                    <InputItem text="长度1：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                    <InputItem text="长度2：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                    <InputItem text="长度3：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                    <InputItem text="长度4：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}} enter={()=>{this.calculateAll()}}></InputItem>
                 </div>
                 <div className={styles.contentFooter}>
                     <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
