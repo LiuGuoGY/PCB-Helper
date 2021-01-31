@@ -57,6 +57,9 @@ input, button {
 }
 
 .contentBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: auto;
     width: 100%;
 }
@@ -71,54 +74,34 @@ input, button {
     line-height: 100%;
 }
 
-.rowItem {
+.input_item_parent {
     display: flex;
     flex-direction: row;
+    align-items: center;
     height: 40px;
     width: auto;
 }
 
-.rowText {
+.input_item_text {
     color: #202327;
-    font-size: 14px;
+    font-size: 13px;
+    margin-right: 8px;
+    line-height: 100%;
+    height: auto;
+    width: 50px;
+    text-align: right;
+}
+
+.input_unit_text {
+    color: #202327;
+    font-size: 13px;
     margin-left: 8px;
     line-height: 100%;
-    width: 70px;
+    height: auto;
+    width: 40px;
 }
 
-.input_content {
-    border: solid;
-    border-radius: 10px;
-    /* border-width: 1px; */
-    border-color: lightblue;
-    width: 100%;
-    height: 100%;
-    outline: none;
-}
-
-.input_content:focus {
-    /* border-radius: 2px;
-    border-width: 3px;
-    border-color: #7BAFF3; */
-}
-
-.input_parent {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    height: 35px;
-    width: 180px;
-    border-radius: 10px;
-    background: lightblue;
-}
-
-.caculator_parent {
-    display: flex;
-    height: 25px;
-    width: 180px;
-}
-
-.input_unit_parent {
+/* .input_unit_parent {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,8 +117,8 @@ input, button {
     line-height: 100%;
     text-align: center;
     color: white;
-}
-
+} */
+/* 
 .input_content_parent {
     display: flex;
     justify-content: center;
@@ -145,7 +128,7 @@ input, button {
     width: 100%;
     border-radius: 10px 0px 0px 10px;
     padding: 1px;
-}
+} */
 
 .button {
     border: 1px solid #eeeeee;
@@ -154,7 +137,7 @@ input, button {
     width: auto;
     height: 23px;
     margin-right: 20px;
-    border-radius: 5px;
+    border-radius: 6px;
     color: black;
     font-size: 13px;
     font-weight: normal;
@@ -178,7 +161,7 @@ input, button {
     width: auto;
     height: 23px;
     margin-right: 20px;
-    border-radius: 5px;
+    border-radius: 6px;
     color: white;
     font-size: 13px;
     font-weight: normal;
@@ -192,6 +175,40 @@ input, button {
 
 .buttonStress:focus {
     outline: none;
+}
+
+
+.input_parent {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: auto;
+}
+
+.input_parent_middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    width: 120px;
+}
+
+.input {
+    border: solid;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.input:focus {
+    border-radius: 2px;
+    border-width: 3px;
+    border-color: #7BAFF3;
 }
 
 /* @media (prefers-color-scheme: dark) { 
