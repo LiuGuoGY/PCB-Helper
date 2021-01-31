@@ -7,30 +7,32 @@ const url = require('url')
 let mainWindow
 
 function createWindow () {
-//创建浏览器窗口,宽高自定义具体大小你开心就好
-mainWindow = new BrowserWindow({
-  width: 800, 
-  height: 600,
-  webPreferences: {
-    webSecurity: false
-  }
-})
-
-  /* 
-   * 加载应用-----  electron-quick-start中默认的加载入口
-    mainWindow.loadURL(url.format({
-      pathname: path.join(__dirname, 'index.html'),
-      protocol: 'file:',
-      slashes: true
-    }))
-  */
+  //创建浏览器窗口,宽高自定义具体大小你开心就好
+  mainWindow = new BrowserWindow({
+    width: 900, 
+    height: 600,
+    minWidth: 900,
+    minHeight: 600,
+    titleBarStyle: 'hidden',
+    webPreferences: {
+      enableRemoteModule: true,
+      nodeIntegration: true,
+      contextIsolation: false,
+    }
+  })
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('http://localhost:3000/');
-  const startUrl = process.env.ELECTRON_START_URL || url.format({
+  let startUrl = "";
+  if(process.env.ELECTRON_START_URL) {
+    startUrl = process.env.ELECTRON_START_URL;
+  } else {
+    startUrl = url.format({
       pathname: path.join(__dirname, './build/index.html'),
       protocol: 'file:',
       slashes: true
-  });
+    });
+    process.env.REACT_APP_ROOT_DIR = __dirname;
+  }
   mainWindow.loadURL(startUrl);
   
   // 打开开发者工具，默认不打开
