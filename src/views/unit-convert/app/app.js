@@ -41,6 +41,7 @@ class Input extends React.Component {
             <div className={styles.input_parent}>
                 <div className={styles.input_parent_middle}>
                     <input  className={styles.input} 
+                            type="number" 
                             placeholder="请输入数字" 
                             value={this.props.value} 
                             onChange={this.handleChange} 
