@@ -1,8 +1,6 @@
 ## PCB-Helper
 
-development
+### 预览
 
-```shell
-$npm run dev
-```
+![预览图](docs/preview.jpg)
 

@@ -19,6 +19,12 @@ input, button {
     -webkit-app-region: no-drag;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0; 
+}
+
 .mainView {
     display: flex;
     flex-direction: column-reverse;
