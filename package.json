@@ -1,6 +1,6 @@
 {
   "name": "PCB-Helper",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "main": "main.js",
   "homepage": "./",
@@ -75,14 +75,19 @@
     "directories": {
       "buildResources": "public"
     },
+    "publish": [{
+      "provider": "github",
+      "owner": "LiuGuoGY",
+      "repo": "PCB-Helper"
+    }],
     "mac": {
       "target": [
-        "dmg"
+        "dmg", "zip"
       ]
     },
     "win": {
       "target": [
-        "nsis"
+        "nsis", "zip"
       ]
     }
   },
@@ -116,6 +121,7 @@
   "devDependencies": {
     "electron": "^11.0.1",
     "electron-builder": "^22.9.1",
+    "electron-updater": "^4.3.5",
     "foreman": "^3.0.1"
   },
   "jest": {

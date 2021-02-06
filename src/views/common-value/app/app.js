@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './app.module.css';
-const { remote } = window.require('electron');
+// const { remote } = window.require('electron');
 
 class Content extends React.Component {
 
