@@ -1,6 +1,6 @@
 {
   "name": "PCB-Helper",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "private": true,
   "main": "main.js",
   "homepage": "./",
@@ -24,6 +24,7 @@
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
+    "electron-updater": "^4.3.5",
     "eslint": "^7.11.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
@@ -75,14 +76,23 @@
     "directories": {
       "buildResources": "public"
     },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "LiuGuoGY",
+        "repo": "PCB-Helper"
+      }
+    ],
     "mac": {
       "target": [
-        "dmg"
+        "dmg",
+        "zip"
       ]
     },
     "win": {
       "target": [
-        "nsis"
+        "nsis",
+        "zip"
       ]
     }
   },

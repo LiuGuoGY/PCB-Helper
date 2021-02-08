@@ -2,6 +2,7 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
+const autoUpdater = require('./src/update');
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow
@@ -45,7 +46,13 @@ function createWindow () {
 }
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
-app.on('ready', createWindow)
+app.on('ready', async () => {
+  // 这里只在生产环境才执行版本检测。
+  if (true) {  //process.env.NODE_ENV === 'production'
+    autoUpdater.checkForUpdates();
+  }
+  createWindow();
+})
 
 // 所有窗口关闭时退出应用.
 app.on('window-all-closed', function () {
