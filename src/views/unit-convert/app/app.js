@@ -126,17 +126,22 @@ class Content extends React.Component {
         return (
             <div className={styles.contentView}>
                 <div className={styles.contentHeader}>
-                    <p className={styles.content_header_text}>单位转换</p>
+                    <div className={styles.dividing_line}></div>
+                    <div className={styles.contentTitleContent}>
+                        <p className={styles.content_header_text}>单位转换</p>
+                    </div>
                 </div>
                 <div className={styles.contentBody}>
-                    <InputItem text="长度1：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                    <InputItem text="长度2：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                    <InputItem text="长度3：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                    <InputItem text="长度4：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                </div>
-                <div className={styles.contentFooter}>
-                    <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
-                    <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
+                    <div className={styles.calculateContent}>
+                        <InputItem text="长度1：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="长度2：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="长度3：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="长度4：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                    </div>
+                    <div className={styles.contentFooter}>
+                        <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
+                        <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
+                    </div>
                 </div>
             </div>
         );
