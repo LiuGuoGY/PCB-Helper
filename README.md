@@ -1,13 +1,18 @@
 <h1 align="center">
-  <img src="./docs/logo.png" alt="PCB-Helper" width="200">
+  <img src="./docs/logo.png" alt="PCB-Helper" width="150">
   <br>PCB-Helper<br>
 </h1>
+<h4 align="center">基于 Electron 构建的嵌入式工程师辅助工具.</h4>
+<p align="center">
+  <a href="https://github.com/LiuGuoGY/PCB-Helper/actions">
+    <img src="https://img.shields.io/github/workflow/status/LiuGuoGY/PCB-Helper/BuildAndRelease?style=flat-square" alt="Github Actions">
+  </a>
+  <a href="https://github.com/LiuGuoGY/PCB-Helper/releases">
+    <img src="https://img.shields.io/github/release/LiuGuoGY/PCB-Helper/all.svg?style=flat-square">
+  </a>
+</p>
 
-## 介绍
 
-一个嵌入式工程师必备的辅助工具。
-
-*它虽然不能用来提高技术，但可以提高效率，节省时间，享受生活。*
 
 ## 预览
 
