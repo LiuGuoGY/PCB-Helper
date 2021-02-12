@@ -84,12 +84,14 @@
       }
     ],
     "mac": {
+      "icon": "build/icons/mac/icon.icns",
       "target": [
         "dmg",
         "zip"
       ]
     },
     "win": {
+      "icon": "build/icons/win/icon.ico",
       "target": [
         "nsis",
         "zip"

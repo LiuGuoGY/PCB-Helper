@@ -1,4 +1,7 @@
-# PCB-Helper
+<h1 align="center">
+  <img src="./docs/logo.png" alt="PCB-Helper" width="200">
+  <br>PCB-Helper<br>
+</h1>
 
 ## 介绍
 

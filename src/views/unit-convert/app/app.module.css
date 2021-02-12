@@ -42,13 +42,29 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     height: 100%;
     width: 100%;
+    background: #F4ECEE;
 }
 
 .contentHeader {
     display: flex;
+    flex-direction: column-reverse;
     height: 30px;
     width: 100%;
-    background: #F7F7F7;
+    background: #F9F0F2;
+}
+
+.dividing_line {
+    width: 100%;
+    height: 1px;
+    background: #E8DFE1;
+    text-align: center;
+}
+
+.contentTitleContent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #F9F0F2;
     align-items: center;
     justify-content: center;
 }
@@ -57,17 +73,34 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    height: 50px;
+    height: 60px;
     width: 100%;
-    background: #F7F7F7;
 }
 
 .contentBody {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
+    height: 100%;
     width: 100%;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.calculateContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: #ECE5E7;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E2DADC;
+    border-style: solid;
 }
 
 .content_header_text {
@@ -136,18 +169,22 @@ input::-webkit-inner-spin-button {
     padding: 1px;
 } */
 
-.button {
+.button, .buttonStress {
     border: 1px solid #eeeeee;
     text-align: center;
-    background: white;
     width: auto;
     height: 23px;
-    margin-right: 20px;
+    margin-left: 15px;
+    margin-right: 7px;
     border-radius: 6px;
-    color: black;
     font-size: 13px;
     font-weight: normal;
     padding: 1px 10px 1px 10px;
+}
+
+.button {
+    background: white;
+    color: black;
 }
 
 .button:active {
@@ -161,17 +198,8 @@ input::-webkit-inner-spin-button {
 }
 
 .buttonStress {
-    border: 1px solid #eeeeee;
-    text-align: center;
     background: #1F8CFC;
-    width: auto;
-    height: 23px;
-    margin-right: 20px;
-    border-radius: 6px;
     color: white;
-    font-size: 13px;
-    font-weight: normal;
-    padding: 1px 10px 1px 10px;
 }
 
 .buttonStress:active {
@@ -201,14 +229,14 @@ input::-webkit-inner-spin-button {
 
 .input {
     border: solid;
-    border-radius: 0px;
+    border-radius: 1px;
     border-width: 1px;
     border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
     height: 100%;
     width: 100%;
     outline: none;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 .input:focus {
