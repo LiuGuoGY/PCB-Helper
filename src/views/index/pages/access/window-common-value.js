@@ -20,6 +20,7 @@ function createWindow () {
       titleBarStyle: 'hidden',
       fullscreenable: false,
       resizable: false,
+      frame: (remote.process.platform == "win32")?false:true,
       webPreferences: {
         enableRemoteModule: true,
         nodeIntegration: true,
