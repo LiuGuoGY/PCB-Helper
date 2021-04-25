@@ -21,7 +21,7 @@ function createWindow () {
       fullscreenable: false,
       resizable: false,
       backgroundColor: '#F4ECEE',
-      frame: (remote.process.platform == "win32")?false:true,
+      frame: (remote.process.platform === "win32")?false:true,
       webPreferences: {
         enableRemoteModule: true,
         nodeIntegration: true,
