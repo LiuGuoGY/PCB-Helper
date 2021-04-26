@@ -1,23 +1,22 @@
 import React from 'react';
 import styles from './app.module.css';
+import {useTextField} from 'react-aria';
+
+
 const { remote } = window.require('electron');
 
-
-// class Input extends React.Component {
-//     render() {
-//         return (
-//             <div className={styles.input_parent}>
-//                 <div className={styles.input_unit_parent}>
-//                     <p className={styles.input_unit_text}>mm</p>
-//                 </div>
-//                 <div className={styles.input_content_parent}>
-//                     <input className={styles.input_content}></input>
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
-
+function TextField(props) {
+    let {label, ...restProps} = props;
+    let ref = React.useRef();
+    let {labelProps, inputProps} = useTextField(props, ref);
+  
+    return (
+      <div style={{display: 'flex', flexDirection: 'column', width: 200}}>
+        <label {...labelProps}>{label}</label>
+        <input {...inputProps} {...restProps} ref={ref} />
+      </div>
+    );
+  }
 
 class Input extends React.Component {
     constructor(props) {
@@ -40,12 +39,19 @@ class Input extends React.Component {
         return (
             <div className={styles.input_parent}>
                 <div className={styles.input_parent_middle}>
-                    <input  className={styles.input} 
+                    {/* <input  className={styles.input} 
                             type="number" 
                             placeholder="请输入数字" 
                             value={this.props.value} 
                             onChange={this.handleChange} 
-                            onKeyUp={this.onKeyUp}></input>
+                            onKeyUp={this.onKeyUp}>
+                    </input> */}
+                    <TextField className={styles.input} 
+                            type="number" 
+                            placeholder="请输入数字"
+                            value={this.props.value} 
+                            onChange={this.handleChange} 
+                            onKeyUp={this.onKeyUp}></TextField>
                 </div>
             </div>
         );
