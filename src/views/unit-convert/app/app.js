@@ -38,21 +38,12 @@ class Input extends React.Component {
     render() {
         return (
             <div className={styles.input_parent}>
-                <div className={styles.input_parent_middle}>
-                    {/* <input  className={styles.input} 
-                            type="number" 
-                            placeholder="请输入数字" 
-                            value={this.props.value} 
-                            onChange={this.handleChange} 
-                            onKeyUp={this.onKeyUp}>
-                    </input> */}
-                    <TextField className={styles.input} 
-                            type="number" 
-                            placeholder="请输入数字"
-                            value={this.props.value} 
-                            onChange={this.handleChange} 
-                            onKeyUp={this.onKeyUp}></TextField>
-                </div>
+                <TextField className={styles.input} 
+                        type="number" 
+                        placeholder="请输入数字"
+                        value={this.props.value} 
+                        onChange={this.handleChange} 
+                        onKeyUp={this.onKeyUp}></TextField>
             </div>
         );
     }
