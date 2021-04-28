@@ -19,7 +19,9 @@ function createWindow () {
       minHeight: 300,
       titleBarStyle: 'hidden',
       fullscreenable: false,
+      backgroundColor: '#F4ECEE',
       resizable: false,
+      frame: (remote.process.platform === "win32")?false:true,
       webPreferences: {
         enableRemoteModule: true,
         nodeIntegration: true,

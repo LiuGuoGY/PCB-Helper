@@ -10,17 +10,17 @@
   <a href="https://github.com/LiuGuoGY/PCB-Helper/releases">
     <img src="https://img.shields.io/github/release/LiuGuoGY/PCB-Helper/all.svg?style=flat-square">
   </a>
+  <a href="https://github.com/LiuGuoGY/PCB-Helper/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/LiuGuoGY/PCB-Helper?style=flat-square">
+  </a>
 </p>
+
 
 
 
 ## 预览
 
 ![预览图](docs/preview.jpg)
-
-## License
-
-根据 GPL-3.0 许可发布。
 
 ## TODO
 

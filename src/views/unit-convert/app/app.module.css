@@ -228,21 +228,14 @@ input::-webkit-inner-spin-button {
 }
 
 .input {
-    border: solid;
-    border-radius: 1px;
-    border-width: 1px;
-    border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
+    padding-left: 1px;
+    padding-right: 1px; 
     height: 100%;
     width: 100%;
-    outline: none;
-    padding-left: 3px;
-    padding-right: 3px;
 }
 
 .input:focus {
-    border-radius: 2px;
-    border-width: 3px;
-    border-color: #7BAFF3;
+    outline-color: #7BAFF3;
 }
 
 /* @media (prefers-color-scheme: dark) { 

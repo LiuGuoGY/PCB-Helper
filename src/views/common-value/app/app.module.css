@@ -42,13 +42,29 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     height: 100%;
     width: 100%;
+    background: #F4ECEE;
 }
 
 .contentHeader {
     display: flex;
+    flex-direction: column-reverse;
     height: 30px;
     width: 100%;
-    background: #F7F7F7;
+    background: #F9F0F2;
+}
+
+.dividing_line {
+    width: 100%;
+    height: 1px;
+    background: #E8DFE1;
+    text-align: center;
+}
+
+.contentTitleContent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #F9F0F2;
     align-items: center;
     justify-content: center;
 }
@@ -57,25 +73,34 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    height: 50px;
+    height: 60px;
     width: 100%;
-    background: #F7F7F7;
 }
 
 .contentBody {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
     width: 100%;
+    padding: 10px;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    /* margin: 20px; */
+    background: #ECE5E7;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E2DADC;
+    border-style: solid;
 }
 
 .content_header_text {
     color: #18191c;
     font-size: 13px;
-    font-weight:bold;
-    /* margin-top: 30px;
-    margin-left: 70px; */
+    font-weight: bold;
     display: absolute;
     line-height: 100%;
 }
@@ -107,47 +132,22 @@ input::-webkit-inner-spin-button {
     width: 40px;
 }
 
-/* .input_unit_parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 100%;
-}
-
-.input_unit_text {
-    width: auto;
-    height: auto;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 100%;
-    text-align: center;
-    color: white;
-} */
-/* 
-.input_content_parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: lightblue;
-    height: 100%;
-    width: 100%;
-    border-radius: 10px 0px 0px 10px;
-    padding: 1px;
-} */
-
-.button {
+.button, .buttonStress {
     border: 1px solid #eeeeee;
     text-align: center;
-    background: white;
     width: auto;
     height: 23px;
-    margin-right: 20px;
+    margin-left: 15px;
+    margin-right: 7px;
     border-radius: 6px;
-    color: black;
     font-size: 13px;
     font-weight: normal;
     padding: 1px 10px 1px 10px;
+}
+
+.button {
+    background: white;
+    color: black;
 }
 
 .button:active {
@@ -161,17 +161,8 @@ input::-webkit-inner-spin-button {
 }
 
 .buttonStress {
-    border: 1px solid #eeeeee;
-    text-align: center;
     background: #1F8CFC;
-    width: auto;
-    height: 23px;
-    margin-right: 20px;
-    border-radius: 6px;
     color: white;
-    font-size: 13px;
-    font-weight: normal;
-    padding: 1px 10px 1px 10px;
 }
 
 .buttonStress:active {
@@ -201,20 +192,28 @@ input::-webkit-inner-spin-button {
 
 .input {
     border: solid;
-    border-radius: 0px;
+    border-radius: 1px;
     border-width: 1px;
     border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
     height: 100%;
     width: 100%;
     outline: none;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 .input:focus {
     border-radius: 2px;
     border-width: 3px;
     border-color: #7BAFF3;
+}
+
+.menuParent {
+    position: absolute;
+    height: 25px;
+    width: 50px;
+    background: yellow;
+    left: 15px;
 }
 
 /* @media (prefers-color-scheme: dark) { 
