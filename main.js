@@ -16,6 +16,7 @@ function createWindow () {
     minHeight: 600,
     titleBarStyle: 'hidden',
     frame: (process.platform === "win32")?false:true,
+    resizable: true,
     webPreferences: {
       enableRemoteModule: true,
       nodeIntegration: true,

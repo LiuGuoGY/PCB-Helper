@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './app.module.css';
-
 //---class---
 import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"
@@ -10,7 +9,10 @@ import iconPCBCheck from "../assets/icon-basic.png"  //#6F6B6D
 import iconRuleSet from "../assets/icon-xiezi.png"
 import iconBasic from "../assets/icon-chizi.png"
 import iconFlash from "../assets/icon-shandian.png"
+import iconMinimize from "../../../assets/icon/minimize.svg"
+import iconClose from "../../../assets/icon/shut.svg"
 
+const { remote } = window.require('electron');
 
 // const Electron = require("electron");
 
@@ -54,6 +56,16 @@ class Menu extends React.Component {
                 <div style={{width: "100%", height:"50px"}}></div>
                 {elements}
             </div>
+        );
+    }
+}
+
+class TitleButton extends React.Component {
+    render() {
+        return (
+            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
+                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
+            </button>
         );
     }
 }
@@ -122,6 +134,10 @@ class App extends React.Component {
                 </div>
                 <div className={styles.contentView}>
                     <Content index={this.state.menuIndex}/>
+                </div>
+                <div className={styles.titleView} hidden={(remote.process.platform === "darwin")}>
+                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
+                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
                 </div>
             </div>
         );
