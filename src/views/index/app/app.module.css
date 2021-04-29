@@ -108,6 +108,41 @@ html {
     height: 100%;
 }
 
+.titleView {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    -webkit-app-region: no-drag;
+}
+
+.titleElementButton {
+    display: flex;
+    width: 35px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+}
+
+.titleElementButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.titleElementButton:active {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.titleElement {
+    width: 18px;
+    height: 18px;
+}
+
 /* @media (prefers-color-scheme: dark) { 
     .menuView {  
         background-color: #2F2A2E;
