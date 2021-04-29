@@ -109,8 +109,8 @@ html {
 }
 
 .titleView {
-    width: 60px;
-    height: 25px;
+    width: 70px;
+    height: 30px;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -121,22 +121,26 @@ html {
 
 .titleElementButton {
     display: flex;
-    width: 30px;
+    width: 35px;
     height: 100%;
     align-items: center;
     justify-content: center;
     border: 0px;
     outline: 0px;
-    background: #FFF;
+    background: transparent;
 }
 
 .titleElementButton:hover {
-    background: #DCD6D6;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.titleElementButton:active {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .titleElement {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
 }
 
 /* @media (prefers-color-scheme: dark) { 
