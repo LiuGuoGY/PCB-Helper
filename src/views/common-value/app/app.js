@@ -11,7 +11,7 @@ class Menu extends React.Component {
             elements.push(<button className={(this.props.index === i)?styles.menuElement:styles.menuElementUnselected}
                                 onClick={()=>{this.props.onClick(i)}}>{this.props.menus[i]}</button>)
             if(i < this.props.menus.length - 1) {
-                elements.push(<div className={styles.separator} hidden={(this.props.index === i || this.props.index === (i+1))}></div>)
+                elements.push(<div className={styles.separator} style={{visibility:(this.props.index === i || this.props.index === (i+1))?"hidden":"visible"}}></div>)
             }
         }
         return (
