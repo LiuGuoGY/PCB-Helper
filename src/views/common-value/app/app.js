@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './app.module.css';
+import iconMinimize from "../../../assets/icon/minimize.svg"
+import iconClose from "../../../assets/icon/shut.svg"
 const { remote } = window.require('electron');
 
 class Menu extends React.Component {
@@ -56,11 +58,25 @@ class Content extends React.Component {
     }
 }
 
+class TitleButton extends React.Component {
+    render() {
+        return (
+            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
+                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
+            </button>
+        );
+    }
+}
+
 class App extends React.Component {
     render() {
         return (
             <div className={styles.mainView}>
                 <Content></Content>
+                <div className={styles.titleView} hidden={(remote.process.platform === "darwin")}>
+                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
+                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                </div>
             </div>
         );
     }
