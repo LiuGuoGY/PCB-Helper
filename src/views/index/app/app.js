@@ -135,7 +135,7 @@ class App extends React.Component {
                 <div className={styles.contentView}>
                     <Content index={this.state.menuIndex}/>
                 </div>
-                <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"block"}}>
+                <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
                     <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
                     <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
                 </div>
