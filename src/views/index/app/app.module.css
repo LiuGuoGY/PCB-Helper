@@ -29,14 +29,14 @@ html {
 .menuView {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 200px;
     height: 100%;
     background-color: #F4ECEE;
 }
 
 .contentView {
     display: flex;
-    width: 100%;
+    flex-grow: 1;
     height: 100%;
 }
 
