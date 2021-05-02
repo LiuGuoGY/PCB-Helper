@@ -74,7 +74,7 @@ class Content extends React.Component {
 
     renderElement(element, index) {
         return (
-            <div style={{display:(this.props.index === index)?"block":"none"}} className={styles.contentElement}>
+            <div style={{display:(this.props.index === index)?"flex":"none"}} className={styles.contentElement}>
                 {element}
             </div>
         );

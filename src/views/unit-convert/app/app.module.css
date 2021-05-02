@@ -232,16 +232,17 @@ input::-webkit-inner-spin-button {
     border-radius: 1px;
     border-width: 1px;
     border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
-    padding-left: 1px;
-    padding-right: 1px; 
+    padding-left: 2px;
+    padding-right: 2px; 
     height: 22px;
     width: 100%;
     font-size: 13px;
 }
 
 .input:focus {
+    border-color: #79ABF1;
     outline-width: 0px;
-    box-shadow: 0 0 0 3px #7BAFF3;
+    box-shadow: 0 0 0 3px #79ABF1;
 }
 
 .titleView {

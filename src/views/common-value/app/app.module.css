@@ -76,7 +76,7 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 .content {
@@ -88,6 +88,7 @@ input::-webkit-inner-spin-button {
     border-width: 1px;
     border-color: #E2DADC;
     border-style: solid;
+    position: relative;
 }
 
 .content_header_text {
@@ -203,7 +204,7 @@ input::-webkit-inner-spin-button {
 
 .menu {
     position: absolute;
-    height: 25px;
+    height: 24px;
     width: 150px;
     /* background: yellow; */
     margin: auto;
@@ -284,6 +285,80 @@ input::-webkit-inner-spin-button {
 .titleElement {
     width: 18px;
     height: 18px;
+}
+
+.pageContentParent {
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+}
+
+.pageContentLeft {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pageContentRight {
+    width: 100%;
+    height: 100%;
+}
+
+.searchFieldParent {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchField {
+    width: 80%;
+    height: 28px;
+    position: relative;
+}
+
+.searchField input{
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #C8C6C8;
+    background-size: 15px 15px;
+    background-position: 8px 6px;
+    background-repeat: no-repeat;
+    padding: 5px 28px 5px 30px;
+}
+
+.searchField input::placeholder {
+    color: #ADABAD;
+}
+
+.searchField button {
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.searchField button img{
+    width: 13px;
+    height: 13px;
+}
+
+.searchField input:focus{
+    border-color: #79ABF1;
+    outline-width: 0px;
+    box-shadow: 0 0 0 3px #79ABF1;
 }
 
 /* @media (prefers-color-scheme: dark) { 
