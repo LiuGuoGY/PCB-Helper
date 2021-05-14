@@ -5,12 +5,12 @@ import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"
 
 //---icon---
-import iconPCBCheck from "../assets/icon-basic.png"  //#6F6B6D
-import iconRuleSet from "../assets/icon-xiezi.png"
-import iconBasic from "../assets/icon-chizi.png"
-import iconFlash from "../assets/icon-shandian.png"
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
+import iconDashBoard from "../../../assets/icon/dashboard.svg"
+import iconTool from "../../../assets/icon/tool.svg"
+import iconRuler from "../../../assets/icon/ruler.svg"
+import iconCheckList from "../../../assets/icon/check_list.svg"
 
 const { remote } = window.require('electron');
 
@@ -95,22 +95,22 @@ class App extends React.Component {
         super(props);
         let menus = [{
             items: [{
-                img: iconFlash,
-                text: "快速开始"
+                img: iconDashBoard,
+                text: "仪表盘"
             }]
         },{
             title: "基础",
             items: [{
-                img: iconBasic,
+                img: iconTool,
                 text: "辅助功能"
             }]
         },{
             title: "PCB",
             items: [{
-                img: iconRuleSet,
+                img: iconRuler,
                 text: "规则设置"
             },{
-                img: iconPCBCheck,
+                img: iconCheckList,
                 text: "检查清单"
             }]
         }]
