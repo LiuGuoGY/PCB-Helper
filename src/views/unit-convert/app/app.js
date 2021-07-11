@@ -3,6 +3,7 @@ import styles from './app.module.css';
 import {useTextField} from 'react-aria';
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
+import iconWenHao from "../../../assets/icon/wenhao.svg"
 
 const { remote } = window.require('electron');
 
@@ -58,6 +59,16 @@ class InputItem extends React.Component {
                 <Input value={this.props.value} onChange={(value)=>{this.props.onChange(value)}} enter={()=>this.props.enter()}></Input>
                 <p className={styles.input_unit_text}>{this.props.unit}</p>
             </div>
+        );
+    }
+}
+
+class HelpButton extends React.Component {
+    render() {
+        return (
+            <button className={styles.howButton} onClick={()=>{this.props.onClick()}}>
+                <img src={iconWenHao} alt="help"></img>
+            </button>
         );
     }
 }
@@ -131,14 +142,17 @@ class Content extends React.Component {
                 </div>
                 <div className={styles.contentBody}>
                     <div className={styles.calculateContent}>
-                        <InputItem text="长度1：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                        <InputItem text="长度2：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                        <InputItem text="长度3：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}} enter={()=>{this.calculateAll()}}></InputItem>
-                        <InputItem text="长度4：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="毫米：" unit="mm" value={this.state.values[0]} onChange={(value)=>{this.clearOthers(0, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="厘米：" unit="cm" value={this.state.values[1]} onChange={(value)=>{this.clearOthers(1, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="密尔：" unit="mil" value={this.state.values[2]} onChange={(value)=>{this.clearOthers(2, value)}} enter={()=>{this.calculateAll()}}></InputItem>
+                        <InputItem text="英寸：" unit="inch" value={this.state.values[3]} onChange={(value)=>{this.clearOthers(3, value)}} enter={()=>{this.calculateAll()}}></InputItem>
                     </div>
                     <div className={styles.contentFooter}>
                         <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
                         <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
+                        <div>
+                            <HelpButton onClick={()=>{alert("1mm ≈ 39.37mil")}}></HelpButton>
+                        </div>
                     </div>
                 </div>
             </div>
