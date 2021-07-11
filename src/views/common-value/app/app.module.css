@@ -42,7 +42,7 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    background: #F4ECEE;
+    background: #F6F6F6;
 }
 
 .contentHeader {
@@ -50,14 +50,21 @@ input::-webkit-inner-spin-button {
     flex-direction: column-reverse;
     height: 30px;
     width: 100%;
-    background: #F9F0F2;
+    background: #FBFBFB;
+}
+
+.dividing_line {
+    width: 100%;
+    height: 1px;
+    background:#dfdfdf;
+    text-align: center;
 }
 
 .contentTitleContent {
     display: flex;
     height: 100%;
     width: 100%;
-    background: #F9F0F2;
+    background: transparent;
     align-items: center;
     justify-content: center;
 }
@@ -83,10 +90,10 @@ input::-webkit-inner-spin-button {
     height: auto;
     width: 100%;
     margin-top: 10px;
-    background: #ECE5E7;
+    background: #EEEEEE;
     border-radius: 5px;
     border-width: 1px;
-    border-color: #E2DADC;
+    border-color: #E4E4E4;
     border-style: solid;
     position: relative;
 }
@@ -213,8 +220,8 @@ input::-webkit-inner-spin-button {
     border: solid;
     border-radius: 6px;
     border-width: 1px;
-    border-color: #d6ced0;
-    background: #ECE5E7;
+    border-color: #DEDEDE;
+    background: #EEEEEE;
     padding: 0px;
 }
 
@@ -225,7 +232,7 @@ input::-webkit-inner-spin-button {
     border: solid;
     border-radius: 5px;
     border-width: 1px;
-    border-color: #BFBEBF;
+    border-color: #CBCBCB;
     text-align: center;
     font-size: 13px;
     line-height: 100%;
@@ -359,6 +366,59 @@ input::-webkit-inner-spin-button {
     border-color: #79ABF1;
     outline-width: 0px;
     box-shadow: 0 0 0 3px #79ABF1;
+}
+
+.radioFieldParent {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.radioFieldParent > p {
+    font-size: 14px;
+    text-align: right;
+    width: 40%;
+    height: 20px;
+    line-height: 18px;
+}
+
+.radioFieldParent > div {
+    width: 5%;
+}
+
+.radioField {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.radioField button {
+    width: 100%;
+    height: 20px;
+    border-width: 0px;
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.radioField button img{
+    width: 18px;
+    height: 18px;
+}
+
+.radioField button > p {
+    font-size: 13px;
+    text-align: left;
+    height: 100%;
+    line-height: 19px;
+    padding-left: 5px;
+}
+
+.radioField button:active img {
+    filter: brightness(70%);
 }
 
 /* @media (prefers-color-scheme: dark) { 

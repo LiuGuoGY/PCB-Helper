@@ -20,7 +20,7 @@ function createWindow () {
       titleBarStyle: 'hidden',
       fullscreenable: false,
       resizable: false,
-      backgroundColor: '#F4ECEE',
+      backgroundColor: '#FBFBFB',
       frame: (remote.process.platform === "win32")?false:true,
       webPreferences: {
         enableRemoteModule: true,

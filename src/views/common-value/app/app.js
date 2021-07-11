@@ -4,6 +4,8 @@ import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 import iconSearch from "../../../assets/icon/search.svg"
 import iconDelete from "../../../assets/icon/delete.svg"
+import iconChoiceYes from "../../../assets/icon/choice_yes.svg"
+import iconChoiceNo from "../../../assets/icon/choice_no.svg"
 const { remote } = window.require('electron');
 
 class Menu extends React.Component {
@@ -26,18 +28,65 @@ class Menu extends React.Component {
     }
 }
 
+class SearchBar extends React.Component {
+    render() {
+        return (
+            <div className={styles.searchField}>
+                <input value={this.props.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder={this.props.placeholder} onChange={(event)=>this.props.onClick(event.target.value)}/>
+                {this.props.text !== '' && 
+                <button onClick={()=>{this.props.onClear()}}>
+                    <img src={iconDelete} alt="delete"></img>
+                </button>}
+            </div>
+        );
+    }
+}
 
+class RadioGroup extends React.Component {
+    render() {
+        let optionElements = []
+        for(let i = 0; i < this.props.options.length; i++) {
+            optionElements.push(
+                <button key={this.props.options[i]} onClick={()=>{this.props.onClick(i)}}>
+                    <img src={(this.props.index === i)?iconChoiceYes:iconChoiceNo} alt="option"></img>
+                    <p>{this.props.options[i]}</p>
+                </button>
+            );
+        }
+        return (
+            <div className={styles.radioField}>
+                {optionElements}
+            </div>
+        );
+    }
+}
 
 class PageRes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: ""
+            text: "",
+            unitSelectsText: ["全部", "Ω", "kΩ", "MΩ"],
+            unitSelectIndex: 0,
+            accuracySelectsText: ["全部", "1%", "5%"],
+            accuracySelectsIndex: 0
         }
     }
 
-    handleSearchChange(event) {
-        this.setState({text: event.target.value});
+    handleSearchChange(text) {
+        this.setState({text: text});
+    }
+
+    handleSearchClear() {
+        this.setState({text: ""});
+    }
+
+    handleUnitClick(index) {
+        this.setState({unitSelectIndex: index});
+    }
+
+    handleAccuracyClick(index) {
+        this.setState({accuracySelectsIndex: index});
     }
 
     render() {
@@ -45,13 +94,23 @@ class PageRes extends React.Component {
             <div className={styles.pageContentParent}>
                 <div className={styles.pageContentLeft}>
                     <div className={styles.searchFieldParent}>
-                        <div className={styles.searchField}>
-                            <input value={this.state.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder="搜索" onChange={(event)=>this.handleSearchChange(event)}/>
-                            {this.state.text !== '' && 
-                            <button onClick={()=>{this.setState({text: ""})}}>
-                                <img src={iconDelete} alt="delete"></img>
-                            </button>}
-                        </div>
+                        <SearchBar text={this.state.text} 
+                            placeholder="搜索" 
+                            onClick={(text)=>{this.handleSearchChange(text)}} 
+                            onClear={()=>{this.handleSearchClear()}}></SearchBar>
+                    </div>
+                    <div className={styles.radioFieldParent}>
+                        <p >单位：</p>
+                        <div ></div>
+                        <RadioGroup options={this.state.unitSelectsText} index={this.state.unitSelectIndex} onClick={(i)=>{this.handleUnitClick(i)}}></RadioGroup>
+                    </div>
+                    <div style={{height: "20px", width: "80%"}}>
+                        <div className={styles.dividing_line}></div>
+                    </div>
+                    <div className={styles.radioFieldParent}>
+                        <p >精度：</p>
+                        <div ></div>
+                        <RadioGroup options={this.state.accuracySelectsText} index={this.state.accuracySelectsIndex} onClick={(i)=>{this.handleAccuracyClick(i)}}></RadioGroup>
                     </div>
                 </div>
                 <div className={styles.pageContentRight}></div>
