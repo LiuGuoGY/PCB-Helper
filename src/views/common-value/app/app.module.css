@@ -60,6 +60,14 @@ input::-webkit-inner-spin-button {
     text-align: center;
 }
 
+
+.dividing_line_column {
+    width: 1px;
+    height: 100%;
+    background:#dfdfdf;
+    text-align: center;
+}
+
 .contentTitleContent {
     display: flex;
     height: 100%;
@@ -304,15 +312,19 @@ input::-webkit-inner-spin-button {
 }
 
 .pageContentLeft {
-    width: 45%;
+    width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .pageContentRight {
-    width: 100%;
-    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .searchFieldParent {
@@ -419,6 +431,61 @@ input::-webkit-inner-spin-button {
 
 .radioField button:active img {
     filter: brightness(70%);
+}
+
+.resultListParent {
+    width: 80%;
+    height: 80%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    border-radius: 0px;
+}
+
+.resultListHeaderParent {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
+    align-items: center;
+}
+
+.resultListHeaderParent p {
+    width: 100px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.resultListContentParent {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.valueList {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.valueListItem {
+    width: 100;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+}
+
+.valueListItem p {
+    width: 100px;
+    font-size: 13px;
+    text-align: left;
+    padding-left: 8px;
 }
 
 /* @media (prefers-color-scheme: dark) { 

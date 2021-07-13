@@ -6,6 +6,7 @@ import iconSearch from "../../../assets/icon/search.svg"
 import iconDelete from "../../../assets/icon/delete.svg"
 import iconChoiceYes from "../../../assets/icon/choice_yes.svg"
 import iconChoiceNo from "../../../assets/icon/choice_no.svg"
+import dataJson from "../../../data/common-values.json"
 const { remote } = window.require('electron');
 
 class Menu extends React.Component {
@@ -56,6 +57,27 @@ class RadioGroup extends React.Component {
         return (
             <div className={styles.radioField}>
                 {optionElements}
+            </div>
+        );
+    }
+}
+
+class ValueList extends React.Component {
+    render() {
+        let listElements = []
+        let data = dataJson.res.R050;
+        for(let i = 0; i < data.length; i++) {
+            listElements.push(
+                <div key={data[i]} className={styles.valueListItem}>
+                    <p >{data[i]}</p>
+                    <div className={styles.dividing_line_column}></div>
+                    <p >5%</p>
+                </div>
+            );
+        }
+        return (
+            <div className={styles.valueList}>
+                {listElements}
             </div>
         );
     }
@@ -113,7 +135,23 @@ class PageRes extends React.Component {
                         <RadioGroup options={this.state.accuracySelectsText} index={this.state.accuracySelectsIndex} onClick={(i)=>{this.handleAccuracyClick(i)}}></RadioGroup>
                     </div>
                 </div>
-                <div className={styles.pageContentRight}></div>
+                <div className={styles.pageContentRight}>
+                    <div className={styles.resultListParent}>
+                        <div className={styles.resultListHeaderParent}>
+                            <p >值</p>
+                            <div style={{height: "60%", width: "1px"}}>
+                                <div className={styles.dividing_line_column}></div>
+                            </div>
+                            <p >精度</p>
+                            <div style={{height: "60%", width: "1px"}}>
+                                <div className={styles.dividing_line_column}></div>
+                            </div>
+                        </div>
+                        <div className={styles.resultListContentParent}>
+                            <ValueList></ValueList>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
