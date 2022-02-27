@@ -63,17 +63,59 @@ class RadioGroup extends React.Component {
 }
 
 class ValueList extends React.Component {
-    render() {
+    render() { 
         let listElements = []
-        let data = dataJson.res.R050;
-        for(let i = 0; i < data.length; i++) {
-            listElements.push(
-                <div key={data[i]} className={styles.valueListItem}>
-                    <p >{data[i]}</p>
-                    <div className={styles.dividing_line_column}></div>
-                    <p >5%</p>
-                </div>
-            );
+        let data050 = dataJson.res.R050;
+        let data010 = dataJson.res.R010;
+        for(let j = 0; j < 2; j++) {
+            let array = [];
+            let accuracyText = "";
+            if(this.props.accuracySelectsIndex === 0) {
+                if(j === 0) {
+                    array = data050;
+                    accuracyText = "5%";
+                } else if(j === 1) {
+                    array = data010;
+                    accuracyText = "1%";
+                }
+            } else if(this.props.accuracySelectsIndex === 1) {
+                array = data010;
+                accuracyText = "1%";
+                if(j > 0) break;
+            } else if(this.props.accuracySelectsIndex === 2) {
+                array = data050;
+                accuracyText = "5%";
+                if(j > 0) break;
+            }
+            
+            for(let i = 0; i < array.length; i++) {
+                if(this.props.unitSelectIndex === 1) {
+                    if(array[i] >= 1000) {
+                        continue;
+                    }
+                } else if(this.props.unitSelectIndex === 2) {
+                    if(array[i] < 1000 || array[i] >= 1000000) {
+                        continue;
+                    }
+                } else if(this.props.unitSelectIndex === 3) {
+                    if(array[i] < 1000000) {
+                        continue;
+                    }
+                }
+                let text = "" + array[i];
+                if(array[i] >= 1000000) {
+                    text = (array[i] / 1000000) + "M";
+                } else if(array[i] >= 1000) {
+                    text = (array[i] / 1000) + "k";
+                }
+                listElements.push(
+                    <div key={accuracyText + array[i]} className={(i%2)?styles.valueListItemLight:styles.valueListItemGray}>
+                        <p className={styles.valueListItemText}>{text}</p>
+                        <div className={styles.dividing_line_column_dark}></div>
+                        <p className={styles.valueListItemText}>{accuracyText}</p>
+                    </div>
+                );
+            }
         }
         return (
             <div className={styles.valueList}>
@@ -148,7 +190,7 @@ class PageRes extends React.Component {
                             </div>
                         </div>
                         <div className={styles.resultListContentParent}>
-                            <ValueList></ValueList>
+                            <ValueList unitSelectIndex={this.state.unitSelectIndex} accuracySelectsIndex={this.state.accuracySelectsIndex}></ValueList>
                         </div>
                     </div>
                 </div>
