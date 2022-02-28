@@ -42,7 +42,7 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     height: 100%;
     width: 100%;
-    background: #F4ECEE;
+    background: #F6F6F6;
 }
 
 .contentHeader {
@@ -50,13 +50,21 @@ input::-webkit-inner-spin-button {
     flex-direction: column-reverse;
     height: 30px;
     width: 100%;
-    background: #F9F0F2;
+    background: #FBFBFB;
 }
 
 .dividing_line {
     width: 100%;
     height: 1px;
-    background: #E8DFE1;
+    background:#dfdfdf;
+    text-align: center;
+}
+
+
+.dividing_line_column {
+    width: 1px;
+    height: 100%;
+    background:#dfdfdf;
     text-align: center;
 }
 
@@ -64,7 +72,7 @@ input::-webkit-inner-spin-button {
     display: flex;
     height: 100%;
     width: 100%;
-    background: #F9F0F2;
+    background: transparent;
     align-items: center;
     justify-content: center;
 }
@@ -83,18 +91,19 @@ input::-webkit-inner-spin-button {
     justify-content: center;
     height: 100%;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
 }
 
 .content {
-    height: 100%;
+    height: auto;
     width: 100%;
-    /* margin: 20px; */
-    background: #ECE5E7;
+    margin-top: 10px;
+    background: #EEEEEE;
     border-radius: 5px;
     border-width: 1px;
-    border-color: #E2DADC;
+    border-color: #E4E4E4;
     border-style: solid;
+    position: relative;
 }
 
 .content_header_text {
@@ -208,12 +217,291 @@ input::-webkit-inner-spin-button {
     border-color: #7BAFF3;
 }
 
-.menuParent {
+.menu {
     position: absolute;
-    height: 25px;
+    height: 24px;
+    width: 150px;
+    /* background: yellow; */
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #DEDEDE;
+    background: #EEEEEE;
+    padding: 0px;
+}
+
+.menuElement {
     width: 50px;
-    background: yellow;
-    left: 15px;
+    height: 100%;
+    background: white;
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #CBCBCB;
+    text-align: center;
+    font-size: 13px;
+    line-height: 100%;
+    align-items: center;
+    outline: none;
+}
+
+.menuElementUnselected {
+    width: 50px;
+    height: 100%;
+    background: transparent;
+    border-width: 0px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 100%;
+    align-items: center;
+    outline: none;
+}
+
+.separator {
+    width: 1px;
+    height: 60%;
+    margin: auto;
+    background-color: #CBC9CB;
+}
+
+.titleView {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    -webkit-app-region: no-drag;
+}
+
+.titleElementButton {
+    display: flex;
+    width: 35px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+}
+
+.titleElementButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.titleElementButton:active {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.titleElement {
+    width: 18px;
+    height: 18px;
+}
+
+.pageContentParent {
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+}
+
+.pageContentLeft {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageContentRight {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchFieldParent {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchField {
+    width: 80%;
+    height: 28px;
+    position: relative;
+}
+
+.searchField input{
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #C8C6C8;
+    background-size: 15px 15px;
+    background-position: 8px 6px;
+    background-repeat: no-repeat;
+    padding: 5px 28px 5px 30px;
+}
+
+.searchField input::placeholder {
+    color: #ADABAD;
+}
+
+.searchField button {
+    border: none;
+    outline: none;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.searchField button img{
+    width: 13px;
+    height: 13px;
+}
+
+.searchField input:focus{
+    border-color: #79ABF1;
+    outline-width: 0px;
+    box-shadow: 0 0 0 3px #79ABF1;
+}
+
+.radioFieldParent {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.radioFieldParent > p {
+    font-size: 14px;
+    text-align: right;
+    width: 40%;
+    height: 20px;
+    line-height: 18px;
+}
+
+.radioFieldParent > div {
+    width: 5%;
+}
+
+.radioField {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.radioField button {
+    width: 100%;
+    height: 20px;
+    border-width: 0px;
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.radioField button img{
+    width: 18px;
+    height: 18px;
+}
+
+.radioField button > p {
+    font-size: 13px;
+    text-align: left;
+    height: 100%;
+    line-height: 19px;
+    padding-left: 5px;
+}
+
+.radioField button:active img {
+    filter: brightness(70%);
+}
+
+.resultListParent {
+    width: 80%;
+    height: 80%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    border-radius: 0px;
+}
+
+.resultListHeaderParent {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
+    align-items: center;
+}
+
+.resultListHeaderParent p {
+    width: 100px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.resultListContentParent {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.valueList {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.valueListItemLight {
+    width: 100;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    background-color: #F8F8F8;
+}
+
+.valueListItemGray {
+    width: 100;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    background-color: #F4F5F5;
+}
+
+.valueListItemText {
+    width: 100px;
+    font-size: 13px;
+    text-align: left;
+    padding-left: 8px;
+}
+
+.dividing_line_column_dark {
+    width: 1px;
+    height: 100%;
+    background: #bbbbbb;
+    text-align: center;
 }
 
 /* @media (prefers-color-scheme: dark) { 

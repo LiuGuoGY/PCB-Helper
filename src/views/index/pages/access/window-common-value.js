@@ -13,13 +13,13 @@ function createWindow () {
   } else {
     //创建浏览器窗口,宽高自定义具体大小你开心就好
     commonValueWindow = new BrowserWindow({
-      width: 400, 
-      height: 300,
-      minWidth: 400,
-      minHeight: 300,
+      width: 600, 
+      height: 400,
+      minWidth: 600,
+      minHeight: 400,
       titleBarStyle: 'hidden',
       fullscreenable: false,
-      backgroundColor: '#F4ECEE',
+      backgroundColor: '#FBFBFB',
       resizable: false,
       frame: (remote.process.platform === "win32")?false:true,
       webPreferences: {
