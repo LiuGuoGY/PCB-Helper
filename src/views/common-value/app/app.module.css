@@ -278,7 +278,8 @@ input::-webkit-inner-spin-button {
     -webkit-app-region: no-drag;
 }
 
-.titleElementButton {
+/* 关闭最小化按钮*/
+.titleElementButton, .titleElementCloseButton {
     display: flex;
     width: 35px;
     height: 100%;
@@ -297,7 +298,19 @@ input::-webkit-inner-spin-button {
     background: rgba(0, 0, 0, 0.2);
 }
 
-.titleElement {
+.titleElementCloseButton:hover {
+    background: #e81123;
+}
+
+.titleElementCloseButton:active {
+    background: #bf0f1d;
+}
+
+.titleElementCloseButton:hover,.titleElementCloseButton:active .titleCloseElement{
+    fill: white;
+}
+
+.titleElement, .titleCloseElement {
     width: 18px;
     height: 18px;
 }

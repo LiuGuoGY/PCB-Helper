@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './app.module.css';
+import SVG from 'react-inlinesvg';
 //---class---
 import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"
@@ -56,16 +57,6 @@ class Menu extends React.Component {
                 <div style={{width: "100%", height:"50px"}}></div>
                 {elements}
             </div>
-        );
-    }
-}
-
-class TitleButton extends React.Component {
-    render() {
-        return (
-            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
-                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
-            </button>
         );
     }
 }
@@ -136,8 +127,12 @@ class App extends React.Component {
                     <Content index={this.state.menuIndex}/>
                 </div>
                 <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
-                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
-                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                    <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
+                        <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
+                    </button>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().close()}}>
+                        <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
+                    </button>
                 </div>
             </div>
         );

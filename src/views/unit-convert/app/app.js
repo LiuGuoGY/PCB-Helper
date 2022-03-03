@@ -1,4 +1,6 @@
 import React from 'react';
+import SVG from 'react-inlinesvg';
+
 import styles from './app.module.css';
 import {useTextField} from 'react-aria';
 import iconMinimize from "../../../assets/icon/minimize.svg"
@@ -176,8 +178,12 @@ class App extends React.Component {
             <div className={styles.mainView}>
                 <Content></Content>
                 <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
-                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
-                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                    <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
+                        <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
+                    </button>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().close()}}>
+                        <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
+                    </button>
                 </div>
             </div>
         );
