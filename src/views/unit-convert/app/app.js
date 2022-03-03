@@ -162,16 +162,6 @@ class Content extends React.Component {
     }
 }
 
-class TitleButton extends React.Component {
-    render() {
-        return (
-            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
-                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
-            </button>
-        );
-    }
-}
-
 class App extends React.Component {
     render() {
         return (

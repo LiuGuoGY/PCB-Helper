@@ -130,7 +130,7 @@ class App extends React.Component {
                     <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
                         <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
                     </button>
-                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().close()}}>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().hide()}}>
                         <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
                     </button>
                 </div>
