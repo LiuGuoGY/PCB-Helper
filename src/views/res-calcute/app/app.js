@@ -120,7 +120,7 @@ class Content extends React.Component {
                 <div className={styles.contentBody}>
                     <div className={styles.focusContent}>
                         <div className={styles.imgContent}>
-                            <img src={imageCircute}></img>
+                            <img alt="circuit" src={imageCircute}></img>
                         </div>
                         <div className={styles.calContent}>
                             <PopUpButton text="R1:R2"></PopUpButton>

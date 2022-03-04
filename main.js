@@ -1,5 +1,5 @@
 // 引入electron并创建一个Browserwindow
-const {app, BrowserWindow, Tray, Menu} = require('electron')
+const {app, BrowserWindow, Tray, Menu, nativeImage} = require('electron')
 const path = require('path')
 const url = require('url')
 const autoUpdater = require('./src/update');
@@ -54,12 +54,12 @@ app.on('ready', async () => {
   if (process.env.NODE_ENV === 'production') {
     autoUpdater.checkForUpdates();
   }
-  if (process.platform == 'darwin') {
-    //mac
-    tray = new Tray(path.join(__dirname, '/public/icons/png/16x16.png'));
-    
-  } else {
+  if (process.platform == 'win32') {
     tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
+  } else {
+    let img = nativeImage.createFromPath(path.join(__dirname, '/public/icons/png/16x16.png'));
+    img.setTemplateImage(true);
+    tray = new Tray(img);
   }
   tray.setToolTip('PCB-Helper');
   tray.on('click', () => {
