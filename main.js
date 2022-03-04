@@ -57,61 +57,36 @@ app.on('ready', async () => {
   if (process.platform == 'darwin') {
     //mac
     tray = new Tray(path.join(__dirname, '/public/icons/png/16x16.png'));
-    tray.setToolTip('PCB-Helper');
-    tray.on('click', () => {
-      if(mainWindow.isVisible()) {
-        if(mainWindow.isMinimized()) {
-          mainWindow.restore();
-        } else {
-          mainWindow.hide();
-        }
-      } else {
-        mainWindow.show();
-      }
-    })
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: '退出',
-        click: () => {
-          tray.destroy();
-          app.quit();
-        },
-      },
-    ])
-  
-    // 设置鼠标右键键事件
-    tray.on('right-click', () => {
-      tray.popUpContextMenu(contextMenu)
-    })
+    
   } else {
     tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
-    tray.setToolTip('PCB-Helper');
-    tray.on('click', () => {
-      if(mainWindow.isVisible()) {
-        if(mainWindow.isMinimized()) {
-          mainWindow.restore();
-        } else {
-          mainWindow.hide();
-        }
-      } else {
-        mainWindow.show();
-      }
-    })
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: '退出',
-        click: () => {
-          tray.destroy();
-          app.quit();
-        },
-      },
-    ])
-  
-    // 设置鼠标右键键事件
-    tray.on('right-click', () => {
-      tray.popUpContextMenu(contextMenu)
-    })
   }
+  tray.setToolTip('PCB-Helper');
+  tray.on('click', () => {
+    if(mainWindow.isVisible()) {
+      if(mainWindow.isMinimized()) {
+        mainWindow.restore();
+      } else {
+        mainWindow.hide();
+      }
+    } else {
+      mainWindow.show();
+    }
+  })
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '退出',
+      click: () => {
+        tray.destroy();
+        app.quit();
+      },
+    }
+  ])
+
+  // 设置鼠标右键键事件
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu)
+  })
 
   createWindow();
 })
