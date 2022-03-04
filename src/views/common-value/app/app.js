@@ -2,6 +2,8 @@ import React from 'react';
 import SVG from 'react-inlinesvg';
 
 import styles from './app.module.css';
+import '../../../components/styles/common.css';
+
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 import iconSearch from "../../../assets/icon/search.svg"

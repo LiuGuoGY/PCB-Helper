@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './app.module.css';
 import SVG from 'react-inlinesvg';
+
+import '../../../components/styles/common.css';
 //---class---
 import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"

@@ -1,6 +1,7 @@
 import React from 'react';
 import createUnitConvertWindow from "./window-unit-convert"
 import createCommonValueWindow from "./window-common-value"
+import createResCalcuteWindow from "./window-res-calcute"
 import commonStyles from "../common.module.css";
 import styles from "./access.module.css";
 
@@ -40,7 +41,7 @@ class PageAccess extends React.Component {
                 <div className={commonStyles.page_title}>辅助功能</div>
                 <div className={styles.page_access_menus_parent}>
                     <MenuElement icon={iconTurn} title="单位转换" subtitle="绘制 PCB 时常用的长度单位转换。" onClick={()=>{createUnitConvertWindow()}}></MenuElement>
-                    <MenuElement icon={iconPeibi} title="电阻配比" subtitle="快速进行常用的电阻分压电路的阻值配比。" onClick={()=>{}}></MenuElement>
+                    <MenuElement icon={iconPeibi} title="电阻配比" subtitle="快速进行常用的电阻分压电路的阻值配比。" onClick={()=>{createResCalcuteWindow()}}></MenuElement>
                     <MenuElement icon={iconSearch} title="常用值查询" subtitle="快速查询常用的电阻、电容、电感值。" onClick={()=>{createCommonValueWindow()}}></MenuElement>
                     <DividingLine></DividingLine>
                     <MenuElement icon={iconLine} title="线宽计算" subtitle="根据 PCB 的实际参数确定某一电流值下的最小线宽。" onClick={()=>{}}></MenuElement>
