@@ -54,34 +54,64 @@ app.on('ready', async () => {
   if (process.env.NODE_ENV === 'production') {
     autoUpdater.checkForUpdates();
   }
-  tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
-  tray.setToolTip('PCB-Helper');
-  tray.on('click', () => {
-    if(mainWindow.isVisible()) {
-      if(mainWindow.isMinimized()) {
-        mainWindow.restore();
+  if (process.platform == 'darwin') {
+    //mac
+    tray = new Tray(path.join(__dirname, '/public/icons/png/16x16.png'));
+    tray.setToolTip('PCB-Helper');
+    tray.on('click', () => {
+      if(mainWindow.isVisible()) {
+        if(mainWindow.isMinimized()) {
+          mainWindow.restore();
+        } else {
+          mainWindow.hide();
+        }
       } else {
-        mainWindow.hide();
+        mainWindow.show();
       }
-    } else {
-      mainWindow.show();
-    }
-    
-  })
-  const contextMenu = Menu.buildFromTemplate([
-    {
-      label: '退出',
-      click: () => {
-        tray.destroy();
-        app.quit();
+    })
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: '退出',
+        click: () => {
+          tray.destroy();
+          app.quit();
+        },
       },
-    },
-  ])
-
-  // 设置鼠标右键键事件
-  tray.on('right-click', () => {
-    tray.popUpContextMenu(contextMenu)
-  })
+    ])
+  
+    // 设置鼠标右键键事件
+    tray.on('right-click', () => {
+      tray.popUpContextMenu(contextMenu)
+    })
+  } else {
+    tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
+    tray.setToolTip('PCB-Helper');
+    tray.on('click', () => {
+      if(mainWindow.isVisible()) {
+        if(mainWindow.isMinimized()) {
+          mainWindow.restore();
+        } else {
+          mainWindow.hide();
+        }
+      } else {
+        mainWindow.show();
+      }
+    })
+    const contextMenu = Menu.buildFromTemplate([
+      {
+        label: '退出',
+        click: () => {
+          tray.destroy();
+          app.quit();
+        },
+      },
+    ])
+  
+    // 设置鼠标右键键事件
+    tray.on('right-click', () => {
+      tray.popUpContextMenu(contextMenu)
+    })
+  }
 
   createWindow();
 })

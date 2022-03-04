@@ -455,6 +455,7 @@ input::-webkit-inner-spin-button {
     border: 1px solid;
     border-color: #e3e3e3;
     border-radius: 0px;
+    -webkit-app-region: no-drag;
 }
 
 .resultListHeaderParent {
@@ -508,6 +509,7 @@ input::-webkit-inner-spin-button {
     font-size: 13px;
     text-align: left;
     padding-left: 8px;
+    user-select: none;
 }
 
 .dividing_line_column_dark {
