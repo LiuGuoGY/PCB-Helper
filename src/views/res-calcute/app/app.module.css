@@ -1,0 +1,341 @@
+input, button {
+    -webkit-app-region: no-drag;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0; 
+}
+
+.mainView {
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -webkit-app-region: drag;
+}
+
+.contentView {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background: #F6F6F6;
+}
+
+.contentHeader {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 30px;
+    width: 100%;
+    background: #FBFBFB;
+}
+
+.dividing_line {
+    width: 100%;
+    height: 1px;
+    background:#dfdfdf;
+    text-align: center;
+}
+
+.contentTitleContent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentFooter {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+}
+
+.contentBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+
+.focusContent {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    background: #EEEEEE;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #E4E4E4;
+    border-style: solid;
+}
+
+.content_header_text {
+    color: #18191c;
+    font-size: 13px;
+    font-weight:bold;
+    /* margin-top: 30px;
+    margin-left: 70px; */
+    display: absolute;
+    line-height: 100%;
+}
+
+.input_item_parent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 40px;
+    width: auto;
+}
+
+.input_item_text {
+    color: #202327;
+    font-size: 13px;
+    margin-right: 8px;
+    line-height: 100%;
+    height: auto;
+    width: 50px;
+    text-align: right;
+}
+
+.input_unit_text {
+    color: #202327;
+    font-size: 13px;
+    margin-left: 8px;
+    line-height: 100%;
+    height: auto;
+    width: 40px;
+}
+
+.imgContent {
+    height: 100%;
+    width: 150px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.imgContent > img {
+    height: auto;
+    width: auto;
+}
+
+.calContent {
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.popUpButtonView {
+    height: 22px;
+    width: 100px;
+    /* border: 1px solid hsl(0, 0%, 93%); */
+    outline: none;
+    background: white;
+    border-radius: 4px;
+    /* box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 4px rgba(0, 0, 0, 0.04);
+    border: 0px;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+.popUpButtonView:active {
+    filter: brightness(0.9)
+}
+
+.popUpButtonRightContent {
+    height: 100%;
+    width: 18px;
+    background-image: linear-gradient(#4C9EF0, #1F8CFC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popUpButtonRightIcon {
+    height: 13px;
+    width: 13px;
+}
+
+.popUpButtonLeftContent {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px; 
+}
+
+.popUpButtonLeftContent > p {
+    font-size: 13px;
+}
+
+.button, .buttonStress {
+    /* border: 1px solid hsl(0, 0%, 93%); */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12), 0 0 4px rgba(0, 0, 0, 0.04);
+    border: 0px;
+    text-align: center;
+    width: auto;
+    height: 23px;
+    margin-left: 15px;
+    margin-right: 7px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 1px 10px 1px 10px;
+}
+
+.button {
+    background: white;
+    color: black;
+}
+
+.button:active {
+    outline: none;
+    background: #0676E8;
+    color: white;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.buttonStress {
+    /* background: #1F8CFC; */
+    background-image: linear-gradient(#4C9EF0, #1F8CFC);
+    color: white;
+}
+
+.buttonStress:active {
+    outline: none;
+    background: #0676E8;
+}
+
+.buttonStress:focus {
+    outline: none;
+}
+
+.contentFooter div {
+    flex-grow: 1;
+}
+
+.howButton {
+    display: flex;
+    left: 20px;
+    width: 23px;
+    height: 23px;
+    border-radius: 100%;
+    background: white;
+    border: 1px solid hsl(0, 0%, 93%);
+    align-items: center;
+    justify-content: center;
+}
+
+.howButton:active {
+    outline: none;
+    background-color: #F0F0F0;
+}
+
+.howButton:focus {
+    outline: none;
+}
+
+.howButton img {
+    width: 80%;
+    height: 80%;
+}
+
+.input_parent {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: 120px;
+}
+
+.input {
+    border: solid;
+    border-radius: 1px;
+    border-width: 1px;
+    border-color: #E4E4E4 #E4E4E4 #BCBCBC #E4E4E4;
+    padding-left: 2px;
+    padding-right: 2px; 
+    height: 22px;
+    width: 100%;
+    font-size: 13px;
+}
+
+.input:focus {
+    border-color: #79ABF1;
+    outline-width: 0px;
+    box-shadow: 0 0 0 3px #79ABF1;
+}
+
+.titleView {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    -webkit-app-region: no-drag;
+}
+
+/* 关闭最小化按钮*/
+.titleElementButton, .titleElementCloseButton {
+    display: flex;
+    width: 35px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+}
+
+.titleElementButton:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.titleElementButton:active {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.titleElementCloseButton:hover {
+    background: #e81123;
+}
+
+.titleElementCloseButton:active {
+    background: #bf0f1d;
+}
+
+.titleElementCloseButton:hover,.titleElementCloseButton:active .titleCloseElement{
+    fill: white;
+}
+
+.titleElement, .titleCloseElement {
+    width: 18px;
+    height: 18px;
+}
+
+/* @media (prefers-color-scheme: dark) { 
+    
+  }  */

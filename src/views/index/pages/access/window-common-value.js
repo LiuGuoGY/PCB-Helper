@@ -5,14 +5,14 @@ const path = require('path')
 const url = require('url')
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
-let commonValueWindow
+let newWindow
 
 function createWindow () {
-  if(commonValueWindow) {
-    commonValueWindow.show();
+  if(newWindow) {
+    newWindow.show();
   } else {
     //创建浏览器窗口,宽高自定义具体大小你开心就好
-    commonValueWindow = new BrowserWindow({
+    newWindow = new BrowserWindow({
       width: 600, 
       height: 400,
       minWidth: 600,
@@ -40,14 +40,14 @@ function createWindow () {
         slashes: true
       });
     }
-    commonValueWindow.loadURL(startUrl);
+    newWindow.loadURL(startUrl);
 
     // 打开开发者工具，默认不打开
     // mainWindow.webContents.openDevTools()
 
     // 关闭window时触发下列事件.
-    commonValueWindow.on('closed', function () {
-      commonValueWindow = null
+    newWindow.on('closed', function () {
+      newWindow = null
     })
   }
 }
