@@ -426,7 +426,7 @@ input::-webkit-inner-spin-button {
 }
 
 .radioField button:active img {
-    filter: brightness(70%);
+    filter: brightness(0.7);
 }
 
 .resultListParent {

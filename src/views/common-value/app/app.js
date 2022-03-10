@@ -37,7 +37,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className={styles.searchField}>
-                <input value={this.props.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder={this.props.placeholder} onChange={(event)=>this.props.onClick(event.target.value)}/>
+                <input value={this.props.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder={this.props.placeholder} onChange={(event)=>this.props.onChange(event.target.value)}/>
                 {this.props.text !== '' && 
                 <button onClick={()=>{this.props.onClear()}}>
                     <img src={iconDelete} alt="delete"></img>
@@ -83,7 +83,6 @@ class ValueList extends React.Component {
             } else {
                 searchNum = parseFloat(searchText);
             }
-            console.log(searchNum);
         }
         for(let j = 0; j < 2; j++) {
             let array = [];
@@ -157,6 +156,9 @@ class PageRes extends React.Component {
 
     handleSearchChange(text) {
         this.setState({text: text});
+        if(text != "") {
+            
+        }
     }
 
     handleSearchClear() {
@@ -185,7 +187,7 @@ class PageRes extends React.Component {
                     <div className={styles.searchFieldParent}>
                         <SearchBar text={this.state.text} 
                             placeholder="搜索" 
-                            onClick={(text)=>{this.handleSearchChange(text)}} 
+                            onChange={(text)=>{this.handleSearchChange(text)}} 
                             onClear={()=>{this.handleSearchClear()}}></SearchBar>
                     </div>
                     <div className={styles.radioFieldParent}>
@@ -215,7 +217,9 @@ class PageRes extends React.Component {
                             </div>
                         </div>
                         <div className={styles.resultListContentParent} id="resList">
-                            <ValueList unitSelectIndex={this.state.unitSelectIndex} accuracySelectsIndex={this.state.accuracySelectsIndex} searchText={this.state.text}></ValueList>
+                            <ValueList unitSelectIndex={this.state.unitSelectIndex} 
+                                accuracySelectsIndex={this.state.accuracySelectsIndex} 
+                                searchText={this.state.text}></ValueList>
                         </div>
                     </div>
                 </div>

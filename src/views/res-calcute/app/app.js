@@ -123,7 +123,10 @@ class Content extends React.Component {
                             <img alt="circuit" src={imageCircute}></img>
                         </div>
                         <div className={styles.calContent}>
-                            <PopUpButton text="R1:R2"></PopUpButton>
+                            {/* <PopUpButton text="R1:R2"></PopUpButton> */}
+                            <div className={styles.calContentTitle}>
+                                <p>已知参数：</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.contentFooter}>
