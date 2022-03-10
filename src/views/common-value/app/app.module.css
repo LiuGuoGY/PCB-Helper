@@ -212,7 +212,7 @@ input::-webkit-inner-spin-button {
     border-radius: 6px;
     border-width: 1px;
     border-color: #DEDEDE;
-    background: #EEEEEE;
+    background: #E9E9E9;
     padding: 0px;
 }
 
@@ -240,6 +240,15 @@ input::-webkit-inner-spin-button {
     font-size: 13px;
     line-height: 100%;
     align-items: center;
+    outline: none;
+}
+
+.menuElement:active, .menuElementUnselected:active {
+    background: #F0F0F0;
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #CBCBCB;
     outline: none;
 }
 
