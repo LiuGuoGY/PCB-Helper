@@ -135,7 +135,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^14.2.7",
+    "electron": "^17.1.2",
     "electron-builder": "^22.14.13",
     "foreman": "^3.0.1",
     "react-aria": "^3.14.0"
