@@ -7,6 +7,7 @@
   "dependencies": {
     "@babel/core": "7.12.3",
     "@babel/runtime": "^7.17.8",
+    "@electron/remote": "^2.0.8",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -134,7 +135,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^13.6.9",
+    "electron": "^14.2.7",
     "electron-builder": "^22.14.13",
     "foreman": "^3.0.1",
     "react-aria": "^3.14.0"

@@ -11,7 +11,7 @@ import iconDelete from "../../../assets/icon/delete.svg"
 import iconChoiceYes from "../../../assets/icon/choice_yes.svg"
 import iconChoiceNo from "../../../assets/icon/choice_no.svg"
 import dataJson from "../../../data/common-values.json"
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 class Menu extends React.Component {
     render() {

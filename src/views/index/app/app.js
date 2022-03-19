@@ -15,7 +15,7 @@ import iconFlash from "../assets/icon-shandian.png"
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 // const Electron = require("electron");
 

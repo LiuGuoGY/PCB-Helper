@@ -8,6 +8,8 @@ const autoUpdater = require('./src/update');
 let mainWindow;
 let tray;
 
+
+
 function createWindow () {
   //创建浏览器窗口,宽高自定义具体大小你开心就好
   mainWindow = new BrowserWindow({
@@ -89,6 +91,10 @@ app.on('ready', async () => {
   })
 
   createWindow();
+
+  //electron 14+ 需要初始化 @electron/remote
+  require('@electron/remote/main').initialize();
+  require('@electron/remote/main').enable(mainWindow.webContents);
 })
 
 // 所有窗口关闭时退出应用.

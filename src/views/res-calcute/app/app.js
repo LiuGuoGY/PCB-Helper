@@ -10,7 +10,7 @@ import iconWenHao from "../../../assets/icon/wenhao.svg"
 import imageCircute from "../assets/circuit.png"
 import imageUpDown from "../../../assets/icon/updown.svg"
 
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 function TextField(props) {
     let {label, ...restProps} = props;

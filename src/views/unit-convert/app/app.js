@@ -9,7 +9,7 @@ import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 import iconWenHao from "../../../assets/icon/wenhao.svg"
 
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 function TextField(props) {
     let {label, ...restProps} = props;
