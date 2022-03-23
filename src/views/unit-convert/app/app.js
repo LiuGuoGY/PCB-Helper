@@ -46,6 +46,7 @@ class Input extends React.Component {
             <div className={styles.input_parent}>
                 <TextField className={styles.input} 
                         type="number" 
+                        aria-label="Input"
                         placeholder="请输入数字"
                         value={this.props.value} 
                         onChange={this.handleChange} 

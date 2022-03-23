@@ -9,7 +9,7 @@ import iconClose from "../../../assets/icon/shut.svg"
 import iconSearch from "../../../assets/icon/search.svg"
 import iconDelete from "../../../assets/icon/delete.svg"
 import iconChoiceYes from "../../../assets/icon/choice_yes.svg"
-import iconChoiceNo from "../../../assets/icon/choice_no.svg"
+import iconChoiceNo from "../../../assets/icon/choice_no2.svg"
 import dataJson from "../../../data/common-values.json"
 const remote = window.require('@electron/remote');
 
@@ -156,9 +156,9 @@ class PageRes extends React.Component {
 
     handleSearchChange(text) {
         this.setState({text: text});
-        if(text != "") {
+        // if(text != "") {
             
-        }
+        // }
     }
 
     handleSearchClear() {

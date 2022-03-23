@@ -46,6 +46,7 @@ class Input extends React.Component {
         return (
             <div className={styles.input_parent}>
                 <TextField className={styles.input} 
+                        aria-label="Input"
                         type="number" 
                         placeholder="请输入数字"
                         value={this.props.value} 
@@ -75,9 +76,7 @@ class InputItem extends React.Component {
     render() {
         return (
             <div className={styles.input_item_parent}>
-                <p className={styles.input_item_text}>{this.props.text}</p>
                 <Input value={this.props.value} onChange={(value)=>{this.props.onChange(value)}} enter={()=>this.props.enter()}></Input>
-                <p className={styles.input_unit_text}>{this.props.unit}</p>
             </div>
         );
     }
@@ -101,10 +100,36 @@ class Button extends React.Component {
     }
 }
 
+class ValueList extends React.Component {
+    render() { 
+        let listElements = []
+        let array = this.props.array;
+        for(let i = 0; i < array.length; i++) {
+            listElements.push(
+                <div key={"" + array[i]} className={(i%2)?styles.valueListItemLight:styles.valueListItemGray}>
+                    {/* <p className={styles.valueListItemText}>{text}</p>
+                    <div className={styles.dividing_line_column_dark}></div>
+                    <p className={styles.valueListItemText}>{array[i]}</p> */}
+                </div>
+            );
+        }
+        return (
+            <div className={styles.valueList}>
+                {listElements}
+            </div>
+        );
+    }
+}
+
 class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            r1DividedByR2: 0,
+            magnitudeTexts: ["1K", "10K", "100K", "1M"],
+            magnitudeIndex: 0,
+            knowVoltageTexts: ["V1", "V2"],
+            knowVoltageIndex: 0
         }
     }
 
@@ -123,9 +148,51 @@ class Content extends React.Component {
                             <img alt="circuit" src={imageCircute}></img>
                         </div>
                         <div className={styles.calContent}>
-                            {/* <PopUpButton text="R1:R2"></PopUpButton> */}
-                            <div className={styles.calContentTitle}>
+                            {/* <div className={styles.calContentTitle}>
                                 <p>已知参数：</p>
+                            </div> */}
+                            <div className={styles.calContentRows}>
+                                <p className={styles.calContentRowsLeftTitle}>R1 / R2：</p>
+                                <InputItem onChange={(text)=>{this.setState({r1DividedByR2: parseFloat(text)})}} enter={()=>{}}> </InputItem>
+                            </div>
+                            <div className={styles.calContentRows}>
+                                <p className={styles.calContentRowsLeftTitle}>R1、R2 数量级：</p>
+                                <PopUpButton text={this.state.magnitudeTexts[this.state.magnitudeIndex]}></PopUpButton>
+                            </div>
+                            <div className={styles.calContentRows}>
+                                <p className={styles.calContentRowsLeftTitle}>已知参数：</p>
+                                <PopUpButton text={this.state.knowVoltageTexts[this.state.knowVoltageIndex]}></PopUpButton>
+                            </div>
+                            <div className={styles.calContentRows}>
+                                <p className={styles.calContentRowsLeftTitle}>已知电压：</p>
+                                <InputItem onChange={(text)=>{this.setState({r1DividedByR2: parseFloat(text)})}} enter={()=>{}}> </InputItem>
+                                <p className={styles.calContentRowsRightText}>V</p>
+                            </div>
+                            {/* <div className={styles.calContentTitle}>
+                                <p>计算结果：</p>
+                            </div> */}
+                            <div className={styles.resultListParent}>
+                                <div className={styles.resultListHeaderParent}>
+                                    <p >R1</p>
+                                    <div style={{height: "60%", width: "1px"}}>
+                                        <div className={styles.dividing_line_column}></div>
+                                    </div>
+                                    <p >R2</p>
+                                    <div style={{height: "60%", width: "1px"}}>
+                                        <div className={styles.dividing_line_column}></div>
+                                    </div>
+                                    <p >V1</p>
+                                    <div style={{height: "60%", width: "1px"}}>
+                                        <div className={styles.dividing_line_column}></div>
+                                    </div>
+                                    <p >V2</p>
+                                    <div style={{height: "60%", width: "1px"}}>
+                                        <div className={styles.dividing_line_column}></div>
+                                    </div>
+                                </div>
+                                <div className={styles.resultListContentParent}>
+                                    <ValueList array={[]}></ValueList>
+                                </div>
                             </div>
                         </div>
                     </div>

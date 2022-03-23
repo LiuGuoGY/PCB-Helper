@@ -142,6 +142,7 @@ input::-webkit-inner-spin-button {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .calContentTitle {
@@ -157,9 +158,39 @@ input::-webkit-inner-spin-button {
     line-height: 13px;
 }
 
+.calContentRows {
+    height: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.calContentRowsLeftTitle {
+    /* color: #202327; */
+    font-size: 13px;
+    margin-right: 8px;
+    line-height: 100%;
+    height: auto;
+    width: 130px;
+    text-align: right;
+}
+
+.calContentRowsRightText {
+    /* color: #202327; */
+    font-size: 13px;
+    line-height: 100%;
+    height: auto;
+    width: 20px;
+    text-align: left;
+    margin-left: 10px;
+}
+
 .popUpButtonView {
     height: 22px;
-    width: 100px;
+    width: 120px;
     /* border: 1px solid hsl(0, 0%, 93%); */
     outline: none;
     background: white;
@@ -201,6 +232,86 @@ input::-webkit-inner-spin-button {
 
 .popUpButtonLeftContent > p {
     font-size: 13px;
+}
+
+.resultListParent {
+    width: 80%;
+    height: 100px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    border-color: #e3e3e3;
+    border-radius: 0px;
+    -webkit-app-region: no-drag;
+}
+
+.resultListHeaderParent {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    border: solid;
+    border-width: 0px 0px 1px 0px;
+    border-color: #DEDEDE;
+    align-items: center;
+}
+
+.resultListHeaderParent p {
+    width: 70px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.resultListContentParent {
+    width: 100%;
+    flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.valueList {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.valueListItemLight {
+    width: 100;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    background-color: #F8F8F8;
+}
+
+.valueListItemGray {
+    width: 100;
+    height: 18px;
+    display: flex;
+    flex-direction: row;
+    background-color: #F4F5F5;
+}
+
+.valueListItemText {
+    width: 100px;
+    font-size: 13px;
+    text-align: left;
+    padding-left: 8px;
+    user-select: none;
+}
+
+.dividing_line_column_dark {
+    width: 1px;
+    height: 100%;
+    background: #bbbbbb;
+    text-align: center;
+}
+
+.dividing_line_column {
+    width: 1px;
+    height: 100%;
+    background:#dfdfdf;
+    text-align: center;
 }
 
 .button, .buttonStress {
