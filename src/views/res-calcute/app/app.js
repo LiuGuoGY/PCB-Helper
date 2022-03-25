@@ -9,6 +9,7 @@ import iconClose from "../../../assets/icon/shut.svg"
 import iconWenHao from "../../../assets/icon/wenhao.svg"
 import imageCircute from "../assets/circuit.png"
 import imageUpDown from "../../../assets/icon/updown.svg"
+import imageYes from "../../../assets/icon/yes.svg"
 
 const remote = window.require('@electron/remote');
 
@@ -58,16 +59,38 @@ class Input extends React.Component {
 }
 
 class PopUpButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isShowList: false
+        }
+    }
     render() {
+        let textList = this.props.textList;
+        let viewArray = [];
+        for(let i = 0; i < textList.length; i++) {
+            viewArray.push(
+                <div className={styles.popUpButtonPopListItem} key={textList[i]} onClick={()=>{this.props.onItemChange(i); this.setState({isShowList: false})}}>
+                    <SVG className={styles.popUpButtonPopListItemIcon} alt="icon" src={imageYes} style={{visibility: (this.props.choiceIndex === i)?"visible":"hidden"}}></SVG>
+                    <p>{textList[i]}</p>
+                </div>
+            )
+        }
         return (
-            <button className={styles.popUpButtonView}>
-                <div className={styles.popUpButtonRightContent}>
-                    <SVG className={styles.popUpButtonRightIcon} src={imageUpDown}></SVG>
+            <div className={styles.popUpButtonViewParent}>
+                <button className={styles.popUpButtonView} onClick={()=>{this.setState({isShowList: true})}}>
+                    <div className={styles.popUpButtonRightContent}>
+                        <SVG className={styles.popUpButtonRightIcon} src={imageUpDown} ></SVG>
+                    </div>
+                    <div className={styles.popUpButtonLeftContent}>
+                        <p>{this.props.textList[this.props.choiceIndex]}</p>
+                    </div>
+                </button>
+                <div className={styles.popUpButtonPopListBackgroud} style={{display: (this.state.isShowList)?"block":"none"}} onMouseDown={()=>{this.setState({isShowList: false})}}></div>
+                <div className={styles.popUpButtonPopList} style={{display: (this.state.isShowList)?"flex":"none", height: (this.props.textList.length * 22 + 10 + "px")}}>
+                    {viewArray}
                 </div>
-                <div className={styles.popUpButtonLeftContent}>
-                    <p>{this.props.text}</p>
-                </div>
-            </button>
+            </div>
         );
     }
 }
@@ -157,11 +180,11 @@ class Content extends React.Component {
                             </div>
                             <div className={styles.calContentRows}>
                                 <p className={styles.calContentRowsLeftTitle}>R1、R2 数量级：</p>
-                                <PopUpButton text={this.state.magnitudeTexts[this.state.magnitudeIndex]}></PopUpButton>
+                                <PopUpButton textList={this.state.magnitudeTexts} choiceIndex={this.state.magnitudeIndex} onItemChange={(i)=>{this.setState({magnitudeIndex: i})}}></PopUpButton>
                             </div>
                             <div className={styles.calContentRows}>
                                 <p className={styles.calContentRowsLeftTitle}>已知参数：</p>
-                                <PopUpButton text={this.state.knowVoltageTexts[this.state.knowVoltageIndex]}></PopUpButton>
+                                <PopUpButton textList={this.state.knowVoltageTexts} choiceIndex={this.state.knowVoltageIndex} onItemChange={(i)=>{this.setState({knowVoltageIndex: i})}}></PopUpButton>
                             </div>
                             <div className={styles.calContentRows}>
                                 <p className={styles.calContentRowsLeftTitle}>已知电压：</p>
