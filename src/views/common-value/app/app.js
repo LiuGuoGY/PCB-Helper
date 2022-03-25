@@ -121,9 +121,9 @@ class ValueList extends React.Component {
                 }
                 let text = "" + array[i];
                 if(array[i] >= 1000000) {
-                    text = (array[i] / 1000000) + "M";
+                    text = (array[i] / 1000000) + " M";
                 } else if(array[i] >= 1000) {
-                    text = (array[i] / 1000) + "k";
+                    text = (array[i] / 1000) + " K";
                 }
                 listElements.push(
                     <div key={accuracyText + array[i]} className={(i%2)?styles.valueListItemLight:styles.valueListItemGray}>

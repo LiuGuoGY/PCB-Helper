@@ -10,6 +10,7 @@ import iconWenHao from "../../../assets/icon/wenhao.svg"
 import imageCircute from "../assets/circuit.png"
 import imageUpDown from "../../../assets/icon/updown.svg"
 import imageYes from "../../../assets/icon/yes.svg"
+import dataJson from "../../../data/common-values.json"
 
 const remote = window.require('@electron/remote');
 
@@ -130,9 +131,14 @@ class ValueList extends React.Component {
         for(let i = 0; i < array.length; i++) {
             listElements.push(
                 <div key={"" + array[i]} className={(i%2)?styles.valueListItemLight:styles.valueListItemGray}>
-                    {/* <p className={styles.valueListItemText}>{text}</p>
+                    <p className={styles.valueListItemText}>{array[i].R1}</p>
                     <div className={styles.dividing_line_column_dark}></div>
-                    <p className={styles.valueListItemText}>{array[i]}</p> */}
+                    <p className={styles.valueListItemText}>{array[i].R2}</p>
+                    <div className={styles.dividing_line_column_dark}></div>
+                    <p className={styles.valueListItemText}>{array[i].V1}</p>
+                    <div className={styles.dividing_line_column_dark}></div>
+                    <p className={styles.valueListItemText}>{array[i].V2}</p>
+                    <div className={styles.dividing_line_column_dark}></div>
                 </div>
             );
         }
@@ -152,8 +158,60 @@ class Content extends React.Component {
             magnitudeTexts: ["1K", "10K", "100K", "1M"],
             magnitudeIndex: 0,
             knowVoltageTexts: ["V1", "V2"],
-            knowVoltageIndex: 0
+            knowVoltageIndex: 0,
+            knowVoltageValue: 0,
+            resultArray: []
         }
+    }
+
+    numToUnitString(num) {
+        let text = "" + num;
+        if(num >= 1000000) {
+            text = (num / 1000000) + " M";
+        } else if(num >= 1000) {
+            text = (num / 1000) + " K";
+        }
+        return text;
+    }
+
+    calCulateResult() {
+        let data010 = dataJson.res.R010;
+        let sumMin, sumMax = 0;
+        let resultArray = [];
+        switch(this.state.magnitudeIndex) {
+            case 0: sumMin = 1000; sumMax = 10000;break;
+            case 1: sumMin = 10000; sumMax = 100000;break;
+            case 2: sumMin = 100000; sumMax = 1000000;break;
+            case 3: sumMin = 1000000; sumMax = 10000000;break;
+            default: break;
+        }
+
+        //挑出符合要求的配比
+        for(let i = 0; i < data010.length; i++) {
+            for(let j = 0; j < data010.length; j++) {
+                if((data010[i] + data010[j] < sumMin) || (data010[i] + data010[j] > sumMax)) {
+                    continue;
+                }
+                let divisor = data010[i] / data010[j];
+                if(divisor < this.state.r1DividedByR2*1.1 && divisor > this.state.r1DividedByR2*0.9) { //R1:R2 
+                    resultArray.push({
+                        R1: this.numToUnitString(data010[i]),
+                        R2: this.numToUnitString(data010[j]),
+                        V1: (this.state.knowVoltageIndex === 0)?("" + this.state.knowVoltageValue):(this.state.knowVoltageValue / data010[j] * (data010[i] + data010[j])).toFixed(2), //
+                        V2: (this.state.knowVoltageIndex === 1)?("" + this.state.knowVoltageValue):(this.state.knowVoltageValue * data010[j] / (data010[i] + data010[j])).toFixed(2), //
+                        accuracy: Math.abs(divisor - this.state.r1DividedByR2),
+                    })
+                    
+                }
+            }
+        }
+
+        //按照准确度排序
+        resultArray.sort(function(a, b){return a.accuracy - b.accuracy}); 
+
+        this.setState({
+            resultArray: resultArray,
+        })
     }
 
     render() {
@@ -176,10 +234,10 @@ class Content extends React.Component {
                             </div> */}
                             <div className={styles.calContentRows}>
                                 <p className={styles.calContentRowsLeftTitle}>R1 / R2：</p>
-                                <InputItem onChange={(text)=>{this.setState({r1DividedByR2: parseFloat(text)})}} enter={()=>{}}> </InputItem>
+                                <InputItem onChange={(text)=>{this.setState({r1DividedByR2: parseFloat(text)})}}> </InputItem>
                             </div>
                             <div className={styles.calContentRows}>
-                                <p className={styles.calContentRowsLeftTitle}>R1、R2 数量级：</p>
+                                <p className={styles.calContentRowsLeftTitle}>R1+R2 数量级：</p>
                                 <PopUpButton textList={this.state.magnitudeTexts} choiceIndex={this.state.magnitudeIndex} onItemChange={(i)=>{this.setState({magnitudeIndex: i})}}></PopUpButton>
                             </div>
                             <div className={styles.calContentRows}>
@@ -188,7 +246,7 @@ class Content extends React.Component {
                             </div>
                             <div className={styles.calContentRows}>
                                 <p className={styles.calContentRowsLeftTitle}>已知电压：</p>
-                                <InputItem onChange={(text)=>{this.setState({r1DividedByR2: parseFloat(text)})}} enter={()=>{}}> </InputItem>
+                                <InputItem onChange={(text)=>{this.setState({knowVoltageValue: parseFloat(text)})}}> </InputItem>
                                 <p className={styles.calContentRowsRightText}>V</p>
                             </div>
                             {/* <div className={styles.calContentTitle}>
@@ -214,13 +272,13 @@ class Content extends React.Component {
                                     </div>
                                 </div>
                                 <div className={styles.resultListContentParent}>
-                                    <ValueList array={[]}></ValueList>
+                                    <ValueList array={this.state.resultArray}></ValueList>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className={styles.contentFooter}>
-                        <Button text="计算" stress={true} onClick={()=>{}}></Button>
+                        <Button text="计算" stress={true} onClick={()=>{this.calCulateResult()}}></Button>
                         <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
                         <div>
                             <HelpButton onClick={()=>{alert("1mm ≈ 39.37mil")}}></HelpButton>
