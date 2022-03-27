@@ -64,24 +64,32 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     width: 100%;
     justify-content: center;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
+    flex-grow: 1;
+}
+
+.focusContentParent {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
 
 .focusContent {
     display: flex;
     flex-direction: row;
     height: 100%;
-    width: 100%;
     background: #EEEEEE;
     border-radius: 5px;
     border-width: 1px;
     border-color: #E4E4E4;
     border-style: solid;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 
 .content_header_text {
@@ -122,18 +130,56 @@ input::-webkit-inner-spin-button {
 }
 
 .imgContent {
+    position: relative;
     height: 100%;
-    width: 150px;
+    width: 160px;
     background: white;
     display: flex;
     justify-content: center;
     align-items: center;
     -webkit-app-region: no-drag;
+    border-radius: 0px;
+    border-width: 1px;
+    border-color: #E4E4E4;
+    border-style: solid;
 }
 
-.imgContent > img {
+.imageCircute {
     height: auto;
     width: auto;
+}
+
+.textV1, .textV2, .textR1, .textR2 {
+    position: absolute;
+    height: auto;
+    width: auto;
+    color: #202327;
+    font-size: 13px;
+}
+
+.textV1 {
+    left: 43px;
+    top: 43px;
+}
+
+.textV2 {
+    left: 100px;
+    top: 140px;
+}
+
+.textR1 {
+    left: 70px;
+    top: 110px;
+}
+
+.textR2 {
+    left: 70px;
+    top: 190px;
+}
+
+.calContentRowsBlank {
+    height: 10px;
+    width: 100%;
 }
 
 .calContent {

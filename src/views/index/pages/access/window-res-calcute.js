@@ -13,10 +13,10 @@ function createWindow () {
   } else {
     //创建浏览器窗口,宽高自定义具体大小你开心就好
     newWindow = new BrowserWindow({
-      width: 500, 
-      height: 350,
-      minWidth: 500,
-      minHeight: 350,
+      width: 600, 
+      height: 420,
+      minWidth: 600,
+      minHeight: 420,
       titleBarStyle: 'hidden',
       fullscreenable: false,
       resizable: false,
