@@ -263,7 +263,10 @@ class Content extends React.Component {
     clearAll() {
         this.setState({
             //参数
+            knowScaleIndex: 0,
             knowScaleValue: "",
+            magnitudeIndex: 0,
+            knowVoltageIndex: 0,
             knowVoltageValue: "",
             resultArray: [],
 
