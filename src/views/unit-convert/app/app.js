@@ -154,7 +154,7 @@ class Content extends React.Component {
                     </div>
                     <div className={styles.contentFooter}>
                         <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
-                        <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
+                        <Button text="清空" stress={false} onClick={()=>{this.setState({values: Array(4).fill("")})}}></Button>
                         <div>
                             <HelpButton onClick={()=>{alert("1mm ≈ 39.37mil")}}></HelpButton>
                         </div>
