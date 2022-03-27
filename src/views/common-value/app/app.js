@@ -71,19 +71,19 @@ class ValueList extends React.Component {
         let listElements = []
         let data050 = dataJson.res.R050;
         let data010 = dataJson.res.R010;
-        let searchText = this.props.searchText.toLowerCase();
-        let searchNum = 0;
-        if(searchText && searchText.length > 0 && searchText !== "") {
-            let indexK = searchText.indexOf("k");
-            let indexM = searchText.indexOf("m");
-            if(indexK >= 0) {
-                searchNum = (parseFloat(searchText.slice(0, indexK)) + parseFloat("0." + searchText.slice(indexK + 1, searchText.length))) * 1000;
-            } else if(indexM >= 0) {
-                searchNum = (parseFloat(searchText.slice(0, indexM)) + parseFloat("0." + searchText.slice(indexM + 1, searchText.length))) * 1000000;
-            } else {
-                searchNum = parseFloat(searchText);
-            }
-        }
+        // let searchText = this.props.searchText.toLowerCase();
+        // let searchNum = 0;
+        // if(searchText && searchText.length > 0 && searchText !== "") {
+        //     let indexK = searchText.indexOf("k");
+        //     let indexM = searchText.indexOf("m");
+        //     if(indexK >= 0) {
+        //         searchNum = (parseFloat(searchText.slice(0, indexK)) + parseFloat("0." + searchText.slice(indexK + 1, searchText.length))) * 1000;
+        //     } else if(indexM >= 0) {
+        //         searchNum = (parseFloat(searchText.slice(0, indexM)) + parseFloat("0." + searchText.slice(indexM + 1, searchText.length))) * 1000000;
+        //     } else {
+        //         searchNum = parseFloat(searchText);
+        //     }
+        // }
         for(let j = 0; j < 2; j++) {
             let array = [];
             let accuracyText = "";
