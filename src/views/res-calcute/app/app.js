@@ -129,8 +129,16 @@ class ValueList extends React.Component {
         let listElements = []
         let array = this.props.array;
         for (let i = 0; i < array.length; i++) {
+            let className = styles.valueListItemLight;
+            if(i === this.props.stressIndex) {
+                className = styles.valueListItemStress;
+            } else if(i%2 === 0) {
+                className = styles.valueListItemLight;
+            } else {
+                className = styles.valueListItemGray;
+            }
             listElements.push(
-                <div key={"" + array[i]} className={(i % 2) ? styles.valueListItemLight : styles.valueListItemGray}>
+                <div key={"" + array[i]} className={className} onClick={()=>{this.props.onSelect(i)}}>
                     <p className={styles.valueListItemText}>{array[i].R1}</p>
                     <div className={styles.dividing_line_column_dark}></div>
                     <p className={styles.valueListItemText}>{array[i].R2}</p>
@@ -154,14 +162,15 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            //参数
             knowScaleTexts: ["R1 / R2", "V1 / V2"],
             knowScaleIndex: 0,
-            knowScaleValue: 0,
+            knowScaleValue: "",
             magnitudeTexts: ["1K", "10K", "100K", "1M"],
             magnitudeIndex: 0,
             knowVoltageTexts: ["V1", "V2"],
             knowVoltageIndex: 0,
-            knowVoltageValue: 0,
+            knowVoltageValue: "",
             resultArray: [],
 
             //电路图
@@ -169,6 +178,9 @@ class Content extends React.Component {
             text_V2: "V2",
             text_R1: "R1",
             text_R2: "R2",
+
+            //结果列表
+            showIndex: 0,
         }
     }
 
@@ -187,7 +199,11 @@ class Content extends React.Component {
         let sumMin, sumMax = 0;
         let resultArray = [];
         let scale = (this.state.knowScaleIndex === 0) ? (this.state.knowScaleValue) : (this.state.knowScaleValue - 1);
-        console.log(scale);
+        
+        if(this.state.knowScaleValue === "" || this.state.knowVoltageValue === "") {
+            return ;
+        }
+
         switch (this.state.magnitudeIndex) {
             case 0: sumMin = 1000; sumMax = 10000; break;
             case 1: sumMin = 10000; sumMax = 100000; break;
@@ -220,8 +236,48 @@ class Content extends React.Component {
         //按照准确度排序
         resultArray.sort(function (a, b) { return a.accuracy - b.accuracy });
 
+        if(resultArray.length > 0) {
+            this.setState({
+                resultArray: resultArray,
+                showIndex: 0,
+                text_V1: resultArray[0].V1 + " V",
+                text_V2: resultArray[0].V2 + " V",
+                text_R1: resultArray[0].R1,
+                text_R2: resultArray[0].R2,
+            })
+        }
+    }
+
+    selectResult(index) {
+        if(this.state.resultArray.length > 0 && index >= 0) {
+            this.setState({
+                showIndex: index,
+                text_V1: this.state.resultArray[index].V1 + " V",
+                text_V2: this.state.resultArray[index].V2 + " V",
+                text_R1: this.state.resultArray[index].R1,
+                text_R2: this.state.resultArray[index].R2,
+            })
+        }
+    }
+
+    clearAll() {
         this.setState({
-            resultArray: resultArray,
+            //参数
+            knowScaleIndex: 0,
+            knowScaleValue: "",
+            magnitudeIndex: 0,
+            knowVoltageIndex: 0,
+            knowVoltageValue: "",
+            resultArray: [],
+
+            //电路图
+            text_V1: "V1",
+            text_V2: "V2",
+            text_R1: "R1",
+            text_R2: "R2",
+
+            //结果列表
+            showIndex: 0,
         })
     }
 
@@ -252,19 +308,19 @@ class Content extends React.Component {
                                 </div>
                                 <div className={styles.calContentRows}>
                                     <p className={styles.calContentRowsLeftTitle}>值：</p>
-                                    <InputItem onChange={(text) => { this.setState({ knowScaleValue: parseFloat(text) }) }}> </InputItem>
+                                    <InputItem value={this.state.knowScaleValue} onChange={(text) => { this.setState({ knowScaleValue: parseFloat(text) }) }}> </InputItem>
                                 </div>
                                 <div className={styles.calContentRows}>
                                     <p className={styles.calContentRowsLeftTitle}>R1+R2 数量级：</p>
                                     <PopUpButton textList={this.state.magnitudeTexts} choiceIndex={this.state.magnitudeIndex} onItemChange={(i) => { this.setState({ magnitudeIndex: i }) }}></PopUpButton>
                                 </div>
                                 <div className={styles.calContentRows}>
-                                    <p className={styles.calContentRowsLeftTitle}>已知：</p>
+                                    <p className={styles.calContentRowsLeftTitle}>已知电压：</p>
                                     <PopUpButton textList={this.state.knowVoltageTexts} choiceIndex={this.state.knowVoltageIndex} onItemChange={(i) => { this.setState({ knowVoltageIndex: i }) }}></PopUpButton>
                                 </div>
                                 <div className={styles.calContentRows}>
                                     <p className={styles.calContentRowsLeftTitle}>值：</p>
-                                    <InputItem onChange={(text) => { this.setState({ knowVoltageValue: parseFloat(text) }) }}> </InputItem>
+                                    <InputItem value={this.state.knowVoltageValue} onChange={(text) => { this.setState({ knowVoltageValue: parseFloat(text) }) }}> </InputItem>
                                     <p className={styles.calContentRowsRightText}>V</p>
                                 </div>
                                 <div className={styles.calContentRowsBlank}></div>
@@ -288,7 +344,8 @@ class Content extends React.Component {
                                         </div>
                                     </div>
                                     <div className={styles.resultListContentParent}>
-                                        <ValueList array={this.state.resultArray}></ValueList>
+                                        <ValueList array={this.state.resultArray} stressIndex={this.state.showIndex} 
+                                            onSelect={(i)=>{this.selectResult(i)}}></ValueList>
                                     </div>
                                 </div>
                             </div>
@@ -296,9 +353,9 @@ class Content extends React.Component {
                     </div>
                     <div className={styles.contentFooter}>
                         <Button text="计算" stress={true} onClick={() => { this.calCulateResult() }}></Button>
-                        <Button text="关闭" stress={false} onClick={() => { remote.getCurrentWindow().close() }}></Button>
+                        <Button text="清空" stress={false} onClick={() => { this.clearAll() }}></Button>
                         <div>
-                            <HelpButton onClick={() => { alert("1mm ≈ 39.37mil") }}></HelpButton>
+                            <HelpButton onClick={() => { alert("根据已知参数，自动计算匹配的电阻。\n结果按照准确度从高到低排序。") }}></HelpButton>
                         </div>
                     </div>
                 </div>
