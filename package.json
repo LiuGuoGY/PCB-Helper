@@ -80,6 +80,7 @@
     "directories": {
       "buildResources": "public"
     },
+    "npmRebuild": false,
     "publish": [
       {
         "provider": "github",
