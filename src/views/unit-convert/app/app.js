@@ -1,11 +1,15 @@
 import React from 'react';
+import SVG from 'react-inlinesvg';
+
 import styles from './app.module.css';
+import '../../../components/styles/common.css';
+
 import {useTextField} from 'react-aria';
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 import iconWenHao from "../../../assets/icon/wenhao.svg"
 
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 function TextField(props) {
     let {label, ...restProps} = props;
@@ -42,6 +46,7 @@ class Input extends React.Component {
             <div className={styles.input_parent}>
                 <TextField className={styles.input} 
                         type="number" 
+                        aria-label="Input"
                         placeholder="请输入数字"
                         value={this.props.value} 
                         onChange={this.handleChange} 
@@ -149,7 +154,7 @@ class Content extends React.Component {
                     </div>
                     <div className={styles.contentFooter}>
                         <Button text="转换" stress={true} onClick={()=>{this.calculateAll()}}></Button>
-                        <Button text="关闭" stress={false} onClick={()=>{remote.getCurrentWindow().close()}}></Button>
+                        <Button text="清空" stress={false} onClick={()=>{this.setState({values: Array(4).fill("")})}}></Button>
                         <div>
                             <HelpButton onClick={()=>{alert("1mm ≈ 39.37mil")}}></HelpButton>
                         </div>
@@ -160,24 +165,18 @@ class Content extends React.Component {
     }
 }
 
-class TitleButton extends React.Component {
-    render() {
-        return (
-            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
-                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
-            </button>
-        );
-    }
-}
-
 class App extends React.Component {
     render() {
         return (
             <div className={styles.mainView}>
                 <Content></Content>
                 <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
-                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
-                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                    <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
+                        <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
+                    </button>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().close()}}>
+                        <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
+                    </button>
                 </div>
             </div>
         );

@@ -1,20 +1,3 @@
-div, p, img {
-    user-select:none;
-    -webkit-user-drag: none;
-}
-
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
-
 input, button {
     -webkit-app-region: no-drag;
 }
@@ -229,7 +212,7 @@ input::-webkit-inner-spin-button {
     border-radius: 6px;
     border-width: 1px;
     border-color: #DEDEDE;
-    background: #EEEEEE;
+    background: #E9E9E9;
     padding: 0px;
 }
 
@@ -260,6 +243,15 @@ input::-webkit-inner-spin-button {
     outline: none;
 }
 
+.menuElement:active, .menuElementUnselected:active {
+    background: #F0F0F0;
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #CBCBCB;
+    outline: none;
+}
+
 .separator {
     width: 1px;
     height: 60%;
@@ -278,7 +270,8 @@ input::-webkit-inner-spin-button {
     -webkit-app-region: no-drag;
 }
 
-.titleElementButton {
+/* 关闭最小化按钮*/
+.titleElementButton, .titleElementCloseButton {
     display: flex;
     width: 35px;
     height: 100%;
@@ -297,7 +290,19 @@ input::-webkit-inner-spin-button {
     background: rgba(0, 0, 0, 0.2);
 }
 
-.titleElement {
+.titleElementCloseButton:hover {
+    background: #e81123;
+}
+
+.titleElementCloseButton:active {
+    background: #bf0f1d;
+}
+
+.titleElementCloseButton:hover,.titleElementCloseButton:active .titleCloseElement{
+    fill: white;
+}
+
+.titleElement, .titleCloseElement {
     width: 18px;
     height: 18px;
 }
@@ -430,7 +435,7 @@ input::-webkit-inner-spin-button {
 }
 
 .radioField button:active img {
-    filter: brightness(70%);
+    filter: brightness(0.9);
 }
 
 .resultListParent {
@@ -442,6 +447,7 @@ input::-webkit-inner-spin-button {
     border: 1px solid;
     border-color: #e3e3e3;
     border-radius: 0px;
+    -webkit-app-region: no-drag;
 }
 
 .resultListHeaderParent {
@@ -464,7 +470,7 @@ input::-webkit-inner-spin-button {
 .resultListContentParent {
     width: 100%;
     flex-grow: 1;
-    overflow-y: scroll;
+    overflow-y: overlay;
 }
 
 .valueList {
@@ -475,7 +481,7 @@ input::-webkit-inner-spin-button {
 }
 
 .valueListItemLight {
-    width: 100;
+    width: 100%;
     height: 18px;
     display: flex;
     flex-direction: row;
@@ -483,7 +489,7 @@ input::-webkit-inner-spin-button {
 }
 
 .valueListItemGray {
-    width: 100;
+    width: 100%;
     height: 18px;
     display: flex;
     flex-direction: row;
@@ -495,6 +501,7 @@ input::-webkit-inner-spin-button {
     font-size: 13px;
     text-align: left;
     padding-left: 8px;
+    user-select: none;
 }
 
 .dividing_line_column_dark {

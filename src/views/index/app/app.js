@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from './app.module.css';
+import SVG from 'react-inlinesvg';
+
+import '../../../components/styles/common.css';
 //---class---
 import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"
@@ -12,7 +15,7 @@ import iconFlash from "../assets/icon-shandian.png"
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 // const Electron = require("electron");
 
@@ -56,16 +59,6 @@ class Menu extends React.Component {
                 <div style={{width: "100%", height:"50px"}}></div>
                 {elements}
             </div>
-        );
-    }
-}
-
-class TitleButton extends React.Component {
-    render() {
-        return (
-            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
-                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
-            </button>
         );
     }
 }
@@ -136,8 +129,12 @@ class App extends React.Component {
                     <Content index={this.state.menuIndex}/>
                 </div>
                 <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
-                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
-                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                    <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
+                        <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
+                    </button>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().hide()}}>
+                        <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
+                    </button>
                 </div>
             </div>
         );

@@ -1,0 +1,27 @@
+/* @font-face {
+    font-family: 'PingFang';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../assets/fonts/PingFang.ttf') format('truetype');
+}
+
+* {
+    font-family: 'PingFang';
+} */
+
+div, p, img {
+    user-select:none;
+    -webkit-user-drag: none;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}

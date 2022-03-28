@@ -1,13 +1,17 @@
 import React from 'react';
+import SVG from 'react-inlinesvg';
+
 import styles from './app.module.css';
+import '../../../components/styles/common.css';
+
 import iconMinimize from "../../../assets/icon/minimize.svg"
 import iconClose from "../../../assets/icon/shut.svg"
 import iconSearch from "../../../assets/icon/search.svg"
 import iconDelete from "../../../assets/icon/delete.svg"
 import iconChoiceYes from "../../../assets/icon/choice_yes.svg"
-import iconChoiceNo from "../../../assets/icon/choice_no.svg"
+import iconChoiceNo from "../../../assets/icon/choice_no2.svg"
 import dataJson from "../../../data/common-values.json"
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 
 class Menu extends React.Component {
     render() {
@@ -33,7 +37,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className={styles.searchField}>
-                <input value={this.props.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder={this.props.placeholder} onChange={(event)=>this.props.onClick(event.target.value)}/>
+                <input value={this.props.text} style={{backgroundImage: `url(${iconSearch})`}} placeholder={this.props.placeholder} onChange={(event)=>this.props.onChange(event.target.value)}/>
                 {this.props.text !== '' && 
                 <button onClick={()=>{this.props.onClear()}}>
                     <img src={iconDelete} alt="delete"></img>
@@ -67,6 +71,19 @@ class ValueList extends React.Component {
         let listElements = []
         let data050 = dataJson.res.R050;
         let data010 = dataJson.res.R010;
+        // let searchText = this.props.searchText.toLowerCase();
+        // let searchNum = 0;
+        // if(searchText && searchText.length > 0 && searchText !== "") {
+        //     let indexK = searchText.indexOf("k");
+        //     let indexM = searchText.indexOf("m");
+        //     if(indexK >= 0) {
+        //         searchNum = (parseFloat(searchText.slice(0, indexK)) + parseFloat("0." + searchText.slice(indexK + 1, searchText.length))) * 1000;
+        //     } else if(indexM >= 0) {
+        //         searchNum = (parseFloat(searchText.slice(0, indexM)) + parseFloat("0." + searchText.slice(indexM + 1, searchText.length))) * 1000000;
+        //     } else {
+        //         searchNum = parseFloat(searchText);
+        //     }
+        // }
         for(let j = 0; j < 2; j++) {
             let array = [];
             let accuracyText = "";
@@ -104,9 +121,9 @@ class ValueList extends React.Component {
                 }
                 let text = "" + array[i];
                 if(array[i] >= 1000000) {
-                    text = (array[i] / 1000000) + "M";
+                    text = (array[i] / 1000000) + " M";
                 } else if(array[i] >= 1000) {
-                    text = (array[i] / 1000) + "k";
+                    text = (array[i] / 1000) + " K";
                 }
                 listElements.push(
                     <div key={accuracyText + array[i]} className={(i%2)?styles.valueListItemLight:styles.valueListItemGray}>
@@ -139,6 +156,9 @@ class PageRes extends React.Component {
 
     handleSearchChange(text) {
         this.setState({text: text});
+        // if(text != "") {
+            
+        // }
     }
 
     handleSearchClear() {
@@ -153,6 +173,13 @@ class PageRes extends React.Component {
         this.setState({accuracySelectsIndex: index});
     }
 
+    scrollToOffset(offset) {
+        document.querySelector("#resList").scroll({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
+
     render() {
         return (
             <div className={styles.pageContentParent}>
@@ -160,7 +187,7 @@ class PageRes extends React.Component {
                     <div className={styles.searchFieldParent}>
                         <SearchBar text={this.state.text} 
                             placeholder="搜索" 
-                            onClick={(text)=>{this.handleSearchChange(text)}} 
+                            onChange={(text)=>{this.handleSearchChange(text)}} 
                             onClear={()=>{this.handleSearchClear()}}></SearchBar>
                     </div>
                     <div className={styles.radioFieldParent}>
@@ -189,8 +216,10 @@ class PageRes extends React.Component {
                                 <div className={styles.dividing_line_column}></div>
                             </div>
                         </div>
-                        <div className={styles.resultListContentParent}>
-                            <ValueList unitSelectIndex={this.state.unitSelectIndex} accuracySelectsIndex={this.state.accuracySelectsIndex}></ValueList>
+                        <div className={styles.resultListContentParent} id="resList">
+                            <ValueList unitSelectIndex={this.state.unitSelectIndex} 
+                                accuracySelectsIndex={this.state.accuracySelectsIndex} 
+                                searchText={this.state.text}></ValueList>
                         </div>
                     </div>
                 </div>
@@ -251,24 +280,18 @@ class Main extends React.Component {
     }
 }
 
-class TitleButton extends React.Component {
-    render() {
-        return (
-            <button className={styles.titleElementButton} onClick={()=>this.props.onClick()}>
-                <img src={this.props.src} alt="icon" className={styles.titleElement}></img>
-            </button>
-        );
-    }
-}
-
 class App extends React.Component {
     render() {
         return (
             <div className={styles.mainView}>
                 <Main></Main>
                 <div className={styles.titleView} style={{display:(remote.process.platform === "darwin")?"none":"flex"}}>
-                    <TitleButton src={iconMinimize} onClick={()=>{remote.getCurrentWindow().minimize()}}></TitleButton>
-                    <TitleButton src={iconClose} onClick={()=>{remote.getCurrentWindow().close()}}></TitleButton>
+                    <button className={styles.titleElementButton} onClick={()=>{remote.getCurrentWindow().minimize()}}>
+                        <SVG src={iconMinimize} alt="icon" className={styles.titleElement}></SVG>
+                    </button>
+                    <button className={styles.titleElementCloseButton} onClick={()=>{remote.getCurrentWindow().close()}}>
+                        <SVG src={iconClose} alt="icon" className={styles.titleCloseElement}></SVG>
+                    </button>
                 </div>
             </div>
         );

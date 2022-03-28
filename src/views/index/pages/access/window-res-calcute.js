@@ -14,13 +14,13 @@ function createWindow () {
     //创建浏览器窗口,宽高自定义具体大小你开心就好
     newWindow = new BrowserWindow({
       width: 600, 
-      height: 400,
+      height: 420,
       minWidth: 600,
-      minHeight: 400,
+      minHeight: 420,
       titleBarStyle: 'hidden',
       fullscreenable: false,
-      backgroundColor: '#FBFBFB',
       resizable: false,
+      backgroundColor: '#FBFBFB',
       frame: (remote.process.platform === "win32")?false:true,
       webPreferences: {
         enableRemoteModule: true,
@@ -35,17 +35,16 @@ function createWindow () {
     // unitConvertWindow.loadURL('http://localhost:5000/unit-convert.html');
     let startUrl = "";
     if(remote.process.env.ELECTRON_START_URL) {
-      startUrl = remote.process.env.ELECTRON_START_URL + "/common-value.html";
+      startUrl = remote.process.env.ELECTRON_START_URL + "/res-calcute.html";
     } else {
       startUrl = url.format({
-        pathname: path.join(remote.process.env.REACT_APP_ROOT_DIR, './build/common-value.html'),
+        pathname: path.join(remote.process.env.REACT_APP_ROOT_DIR, './build/res-calcute.html'),
         protocol: 'file:',
         slashes: true
       });
     }
     newWindow.loadURL(startUrl);
 
-    window.require('@electron/remote/main').enable(newWindow.webContents);
 
     // 打开开发者工具，默认不打开
     // newWindow.webContents.openDevTools()

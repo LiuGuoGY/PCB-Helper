@@ -1,18 +1,18 @@
 // 引入electron并创建一个Browserwindow
-const { remote } = window.require('electron');
+const remote = window.require('@electron/remote');
 const BrowserWindow = remote.BrowserWindow;
 const path = require('path')
 const url = require('url')
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
-let unitConvertWindow
+let newWindow
 
 function createWindow () {
-  if(unitConvertWindow) {
-    unitConvertWindow.show();
+  if(newWindow) {
+    newWindow.show();
   } else {
     //创建浏览器窗口,宽高自定义具体大小你开心就好
-    unitConvertWindow = new BrowserWindow({
+    newWindow = new BrowserWindow({
       width: 400, 
       height: 300,
       minWidth: 400,
@@ -28,6 +28,9 @@ function createWindow () {
         contextIsolation: false,
       }
     })
+
+    remote.require('@electron/remote/main').enable(newWindow.webContents);
+
     // 加载应用----适用于 react 项目
     // unitConvertWindow.loadURL('http://localhost:5000/unit-convert.html');
     let startUrl = "";
@@ -40,14 +43,15 @@ function createWindow () {
         slashes: true
       });
     }
-    unitConvertWindow.loadURL(startUrl);
+    
+    newWindow.loadURL(startUrl);
 
     // 打开开发者工具，默认不打开
-    // mainWindow.webContents.openDevTools()
+    // newWindow.webContents.openDevTools()
 
     // 关闭window时触发下列事件.
-    unitConvertWindow.on('closed', function () {
-      unitConvertWindow = null
+    newWindow.on('closed', function () {
+      newWindow = null
     })
   }
 }

@@ -1,11 +1,14 @@
 // 引入electron并创建一个Browserwindow
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Tray, Menu, nativeImage} = require('electron')
 const path = require('path')
 const url = require('url')
 const autoUpdater = require('./src/update');
 
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
-let mainWindow
+let mainWindow;
+let tray;
+
+
 
 function createWindow () {
   //创建浏览器窗口,宽高自定义具体大小你开心就好
@@ -43,17 +46,55 @@ function createWindow () {
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
-    mainWindow = null
+    mainWindow = null;
   })
 }
 
 // 当 Electron 完成初始化并准备创建浏览器窗口时调用此方法
 app.on('ready', async () => {
   // 这里只在生产环境才执行版本检测。
-  if (true) {  //process.env.NODE_ENV === 'production'
+  if (process.env.NODE_ENV === 'production') {
     autoUpdater.checkForUpdates();
   }
+  if (process.platform == 'win32') {
+    tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
+  } else {
+    let img = nativeImage.createFromPath(path.join(__dirname, '/public/icons/png/16x16.png'));
+    img.setTemplateImage(true);
+    tray = new Tray(img);
+  }
+  tray.setToolTip('PCB-Helper');
+  tray.on('click', () => {
+    if(mainWindow.isVisible()) {
+      if(mainWindow.isMinimized()) {
+        mainWindow.restore();
+      } else {
+        mainWindow.hide();
+      }
+    } else {
+      mainWindow.show();
+    }
+  })
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: '退出',
+      click: () => {
+        tray.destroy();
+        app.quit();
+      },
+    }
+  ])
+
+  // 设置鼠标右键键事件
+  tray.on('right-click', () => {
+    tray.popUpContextMenu(contextMenu)
+  })
+
   createWindow();
+
+  //electron 14+ 需要初始化 @electron/remote
+  require('@electron/remote/main').initialize();
+  require('@electron/remote/main').enable(mainWindow.webContents);
 })
 
 // 所有窗口关闭时退出应用.
