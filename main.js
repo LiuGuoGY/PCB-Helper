@@ -57,9 +57,9 @@ app.on('ready', async () => {
     autoUpdater.checkForUpdates();
   }
   if (process.platform == 'win32') {
-    tray = new Tray(path.join(__dirname, './public/icons/win/icon.ico'));
+    tray = new Tray(path.join(__dirname, './build/icons/win/icon.ico'));
   } else {
-    let img = nativeImage.createFromPath(path.join(__dirname, '/public/icons/png/16x16.png'));
+    let img = nativeImage.createFromPath(path.join(__dirname, './build/icons/png/16x16.png'));
     img.setTemplateImage(true);
     tray = new Tray(img);
   }
