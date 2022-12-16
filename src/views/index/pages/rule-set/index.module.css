@@ -1,0 +1,6 @@
+.checkboxParent {
+    -webkit-app-region: no-drag;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}

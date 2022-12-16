@@ -6,6 +6,7 @@ import '../../../components/styles/common.css';
 //---class---
 import PageStart from "../pages/start/start"
 import PageAccess from "../pages/access/access"
+import PageRuleSet from "../pages/rule-set/index"
 
 //---icon---
 import iconPCBCheck from "../assets/icon-basic.png"  //#6F6B6D
@@ -78,6 +79,7 @@ class Content extends React.Component {
             <div className={styles.contentParent}>
                 {this.renderElement(<PageStart ></PageStart>, 0)}
                 {this.renderElement(<PageAccess ></PageAccess>, 1)}
+                {this.renderElement(<PageRuleSet ></PageRuleSet>, 2)}
             </div>
         );
     }
